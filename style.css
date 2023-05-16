@@ -51,12 +51,12 @@ a:hover {
 /*typography finished*/
 
 /*header part*/
-.header_bg {
+.header-bg {
     background-color: #656565;
     border-bottom: 2px solid #000000;
 }
 
-.full_wrapper {
+.full-wrapper {
     width: 100%;
 }
 
@@ -180,7 +180,7 @@ a:hover {
 
 .menu-section form.search {
     background-color: #fff;
-    padding: 4px;
+    padding: 4px 7px 4px 7px;
     border-radius: 8px;
     margin-top: 2px;
     margin-bottom: 4px;
@@ -197,6 +197,7 @@ a:hover {
     /* width: 235px; */
     /* font-size: 22px; */
 }
+
 .menu-section span {
     display: block;
     align-self: center;
@@ -221,13 +222,13 @@ a:hover {
 }
 
 /*btn end*/
-.bg_slider {
+.slider-container {
     background-color: #9999;
     padding-top: 8px;
     padding-bottom: 20px;
 }
 
-.slider_section {
+.slider-section {
     z-index: -10;
 }
 
