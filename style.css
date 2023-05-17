@@ -329,27 +329,31 @@ a:hover {
     float: right;
 }
 
-.sidebar_content {
+.sidebar-content {
     /* padding:7px 10px;*/
     padding: 0px 0px 10px 0px;
 }
 
-.sidebar_content h2 {
+.sidebar-content h2 {
     background-color: #6c6b6b;
     color: #faf8f8;
     padding: 4px 10px;
 }
 
-.sidebar_content ul {
+.sidebar-content ul {
     background-color: white;
 }
 
-.sidebar_content ul li {
+.sidebar-content ul li {
     padding: 9px 10px;
     border-bottom: 1px dotted #b2aeae;
 }
 
-.sidebar_content ul li a {}
+.sidebar-content ul li a {}
+
+.content-section, .sidebar-content {
+    margin-top: 20px;
+}
 
 .tf {
     width: 223px;
@@ -439,7 +443,9 @@ a:hover {
 }
 
 /*about part start*/
-.about_part {}
+.about_part {
+    display: inline;
+}
 
 .about_part h2 {
     color: #95995c;
