@@ -65,16 +65,16 @@ a:hover {
     margin: 0 auto;
 }
 
-.header_section {
+.header-section {
     background-color: #656565;
     padding: 12px 0px;
 }
 
-.header_section>.header_left {
+.header-section>.header-left {
     width: 400px;
 }
 
-.header_left img {
+.header-left img {
     width: 60px;
     height: 50px;
     float: left;
@@ -82,19 +82,19 @@ a:hover {
     border-radius: 20px;
 }
 
-.header_left h1 {
+.header-left h1 {
     color: white;
     margin-top: 10px;
     font-size: 24px;
 }
 
-.header_right {}
+.header-right {}
 
-.font_awesome {
+.font-awesome {
     margin-top: 5px;
 }
 
-.font_awesome a {
+.font-awesome a {
     font-size: 17px;
     background-color: black;
     color: white;
@@ -106,12 +106,12 @@ a:hover {
     transition: 0.8s ease;
 }
 
-.same_icon {
+.same-icon {
     margin: 8px 0px 0px 10px;
     display: inline-block;
 }
 
-.font_awesome a:hover {
+.font-awesome a:hover {
     background-color: #ddd;
     color: orange;
     width: 40px;
@@ -236,7 +236,7 @@ a:hover {
 /*sllider part end*/
 
 /*.......Content part statrt....*/
-.content_bg {
+.content-bg {
     background-color: #C2C2C2;
     padding: 0px 0px 10px 0px;
 
@@ -249,12 +249,12 @@ a:hover {
     padding: 10px 15px;
 }
 
-.content_left {
+.content-left {
     float: left;
     width: 440px;
 }
 
-.content_left h2 {
+.content-left h2 {
     color: #594a5b;
     font-size: 30px;
     text-shadow: 3px 4px 5px #be4f4f;
@@ -264,11 +264,11 @@ a:hover {
 
 }
 
-.same_content {
+.same-content {
     margin-bottom: 70px;
 }
 
-.same_content img {
+.same-content img {
     width: 200px;
     height: 150px;
     float: left;
@@ -278,18 +278,18 @@ a:hover {
     box-shadow: 1px 3px 6px 3px #685454;
 }
 
-.content_group {}
+.content-group {}
 
-.content_group h3 {
+.content-group h3 {
     color: #010101;
 }
 
-.content_group p {
+.content-group p {
     color: #535151;
     font-size: 16px;
 }
 
-.content_group a {
+.content-group a {
     margin-right: 14px;
     background-color: black;
     color: white;
@@ -300,18 +300,18 @@ a:hover {
     transition: all 0.5s ease;
 }
 
-.content_group a:hover {
+.content-group a:hover {
     background-color: #fad710;
     color: #151010;
 }
 
-.content_right {
+.content-right {
     float: right;
     width: 440px;
 
 }
 
-.content_right h2 {
+.content-right h2 {
     color: #594a5b;
     font-size: 30px;
     text-shadow: 3px 4px 5px #be4f4f;
@@ -323,7 +323,7 @@ a:hover {
 /*content part finished*/
 
 /*side bar section start*/
-.side_bar {
+.sidebar {
     width: 248px;
     margin-left: 20px;
     float: right;
@@ -351,7 +351,8 @@ a:hover {
 
 .sidebar-content ul li a {}
 
-.content-section, .sidebar-content {
+.content-section,
+.sidebar-content {
     margin-top: 20px;
 }
 
@@ -377,16 +378,16 @@ a:hover {
 
 /*side bar section end*/
 /*footer part start*/
-.footer_bg {
+.footer-bg {
     background-color: #656565;
     padding: 5px 0px;
 }
 
-.footer_section {
+.footer-section {
     text-align: center;
 }
 
-.footer_section p {
+.footer-section p {
     color: white;
 }
 
@@ -443,11 +444,11 @@ a:hover {
 }
 
 /*about part start*/
-.about_part {
+.about-part {
     display: inline;
 }
 
-.about_part h2 {
+.about-part h2 {
     color: #95995c;
     margin-bottom: 14px;
     border-bottom: 2px solid #b4a7a7;
@@ -455,7 +456,7 @@ a:hover {
     text-shadow: 2px 1px 2px #191515;
 }
 
-.about_part img {
+.about-part img {
     float: left;
     width: 407px;
     height: 329px;
@@ -464,7 +465,7 @@ a:hover {
     border-radius: 10px;
 }
 
-.about_part p {
+.about-part p {
     color: #5f2a2a;
     line-height: 29px;
 }
@@ -479,9 +480,9 @@ a:hover {
 
 /*about part end*/
 /*product part start*/
-.product_part {}
+.product-part {}
 
-.product_part h2 {
+.product-part h2 {
     color: #a34343;
     border-bottom: 1px solid #846f6f;
     padding-bottom: 4px;
@@ -506,9 +507,9 @@ a:hover {
 
 /*product part end*/
 /*contact part start*/
-.contact_part {}
+.contact-part {}
 
-.contact_part h2 {
+.contact-part h2 {
     color: #e7d6d6;
     text-align: center;
     text-shadow: 3px 4px 6px #ff6868;
@@ -521,7 +522,7 @@ a:hover {
     padding-top: 22px;
 }
 
-.same_input {
+.same-input {
     width: 220px;
     height: 23px;
     padding: 3px;
@@ -533,7 +534,7 @@ a:hover {
     background-color: #d9cccceb;
 }
 
-.same_part {
+.same-part {
     font-size: 17px;
     color: #ffffff;
 }
