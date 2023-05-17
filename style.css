@@ -225,16 +225,15 @@ a:hover {
 /*btn end*/
 .slider-container {
     background-color: #9999;
-    margin-top: 15px;
     padding-top: 8px;
-    padding-bottom: 20px;
 }
 
 .slider-section {
     z-index: -10;
+    margin-top: 15px;
 }
 
-/*slider part end*/
+/*sllider part end*/
 
 /*.......Content part statrt....*/
 .content_bg {
@@ -243,7 +242,7 @@ a:hover {
 
 }
 
-.content_section {
+.content-section {
     width: 900px;
     float: left;
     background-color: white;
