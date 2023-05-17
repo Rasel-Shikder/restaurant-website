@@ -82,9 +82,10 @@ a:hover {
     border-radius: 20px;
 }
 
-.header_left h2 {
+.header_left h1 {
     color: white;
     margin-top: 10px;
+    font-size: 24px;
 }
 
 .header_right {}
@@ -224,6 +225,7 @@ a:hover {
 /*btn end*/
 .slider-container {
     background-color: #9999;
+    margin-top: 15px;
     padding-top: 8px;
     padding-bottom: 20px;
 }
@@ -232,11 +234,7 @@ a:hover {
     z-index: -10;
 }
 
-#wrapper {
-    margin-top: 15px;
-}
-
-/*sllider part end*/
+/*slider part end*/
 
 /*.......Content part statrt....*/
 .content_bg {
