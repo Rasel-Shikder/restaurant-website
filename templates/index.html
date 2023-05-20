@@ -187,7 +187,12 @@
 {% endblock %}
 
 {% block externalScripts %}
-<script type="text/javascript" src={{ url_for('static', filename="vendor/jquery/jquery.min.js" ) }}></script>
-<script type="text/javascript" src={{ url_for('static', filename="vendor/nivo-slider/jquery.nivo.slider.js" )
+<script src={{ url_for('static', filename="vendor/jquery/jquery.min.js" ) }}></script>
+<script src={{ url_for('static', filename="vendor/nivo-slider/jquery.nivo.slider.js" )
 	}}></script>
+<script>
+	$(window).load(function () {
+		$('#slider').nivoSlider();
+	});
+</script>
 {% endblock %}
