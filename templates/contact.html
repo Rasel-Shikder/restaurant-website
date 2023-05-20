@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="full-wrapper content-bg clear">
+	<div class="wrapper clear">
+		<div class="content-section clear"
+			style="width: 100%; background: url({{ url_for('static', filename='images/products/resturent1.jpg' )}}) no-repeat;background-size: cover;">
+			<di class="contact-part">
+				<h2>Contact Me</h2>
+				<div class="contact_form">
+					<form>
+						<table>
+							<tr>
+								<td class="same-part">User name</td>
+								<td><input type="text" placeholder="enter name" class="same-input"></td>
+							</tr>
+							<tr>
+								<td class="same-part">Email</td>
+								<td><input type="Email" placeholder="enter Email" class="same-input"></td>
+							</tr>
+							<tr>
+								<td class="same-part">Password</td>
+								<td><input type="Password" placeholder="enter Password" class="same-input"></td>
+							</tr>
+							<tr>
+								<td class="same-part">confirm Password</td>
+								<td><input type="Password" placeholder="confirm Password" class="same-input"></td>
+							</tr>
+							<tr>
+								<td class="same-part">Customer message</td>
+								<td><textarea rows="5" cols="25" class="same-input" style="height: 74px;">
+
+								   </textarea></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><input type="submit" class="submit"></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</di>
+		</div>
+	</div>
+</div>
+{% endblock %}

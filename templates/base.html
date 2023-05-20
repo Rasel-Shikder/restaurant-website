@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saffron Restaurant</title>
+    <link rel="stylesheet" href={{ url_for('static', filename="default.css" )}} type="text/css" media="screen" />
+    <!-- fontawesome css and js links  -->
+
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="vendor/fontawesome/fontawesome.min.css" )
+        }}>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static',
+        filename="vendor/fontawesome/fontawesome.all.min.css" ) }}>
+
+    <script type="text/javascript" src={{ url_for('static', filename="vendor/fontawesome/fontawesome.min.js" )
+        }}></script>
+    <script type="text/javascript" src={{ url_for('static', filename="vendor/fontawesome/all.min.js" ) }}></script>
+
+    <!-- default css -->
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="default.css" ) }}>
+
+    {% block externalHeadIncludes %} {% endblock %}
+</head>
+
+<body>
+    <header class="full-wrapper header-bg clear">
+        <div class="wrapper clear">
+            <div class="header-section clear">
+
+                <div class="header-left clear float-left">
+                    <img src={{ url_for('static', filename="images/logo.png" ) }} alt="Website Logo">
+                    <h1>Saffron Restaurant</h1>
+                </div>
+
+                <!-- <div class="header-right clear float-right">
+                        <div class="font-awesome">
+                            <a href="#"><span class="same-icon"><i class="fab fa-facebook-f"></i></span></a>
+                            <a href="#"><span class="same-icon"><i class="fab fa-twitter"></i></span></a>
+                            <a href="#"><span class="same-icon"><i class="fab fa-linkedin-in"></i></span></a>
+                            <a href="#"><span class="same-icon"><i class="fab fa-google-plus-g"></i></span></a>
+                        </div>
+                    </div> -->
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Start: Social Links -->
+    <div class="fixed-icon">
+        <ul>
+            <li><a href="#"><img src={{ url_for('static', filename="images/pinterest.png" ) }}
+                        title="Follow on Pinterest"></a></li>
+            <li><a href="#"><img src={{ url_for('static', filename="images/facebook.png" ) }}
+                        title="Follow on Facebook"></a></li>
+            <li><a href="#"><img src={{ url_for('static', filename="images/google-plus.png" ) }}
+                        title="Follow on Google+"></a></li>
+            <li><a href="#"><img src={{ url_for('static', filename="images/linkedin.png" ) }}
+                        title="Follow on LinkedIn"></a></li>
+            <li><a href="#"><img src={{ url_for('static', filename="images/twitter.png" ) }}
+                        title="Follow on Twitter"></a>
+            </li>
+        </ul>
+    </div>
+    <!-- End: Social Links -->
+
+    <!-- Start: Navigation and Search -->
+    <section class="full-wrapper bg-dark">
+        <div class="wrapper menu-section">
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#">About</a>
+                        <ul>
+                            <li><a href="/about">About Me</a></li>
+                            <li><a href="#">Our factory</a></li>
+                            <li><a href="#">Our Machine</a></li>
+                            <li><a href="#">Our Stuff</a></li>
+                            <li><a href="#">Our Field</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="#">Others</a></li>
+                </ul>
+            </nav>
+            <form class="search">
+                <input type="search" placeholder="Search here..." class="search">
+                <span><i class="fa fa-search" aria-hidden="true"></i></span>
+            </form>
+        </div>
+    </section>
+    <!-- End: Navigation and Search -->
+
+    <main>{% block main %}{% endblock %}</main>
+
+    <footer class="full-wrapper footer-bg clear">
+        <div class="wrapper clear">
+            <div class="footer-section">
+                <p>&copy; 2023 Saffron Restaurant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src={{ url_for('static', filename="default.js" ) }}></script>
+    <script type="text/javascript" src={{ url_for('static', filename="js/scroll_to_top.js" ) }}></script>
+
+    {% block externalScripts %}{% endblock %}
+</body>
+
+</html>

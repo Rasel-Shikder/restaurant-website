@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+
+{% block externalHeadIncludes %}
+<!-- nivo-slider -->
+<link rel="stylesheet" href={{ url_for('static', filename="vendor/nivo-slider/themes/default/default.css" ) }}
+	type="text/css" media="screen" />
+<link rel="stylesheet" href={{ url_for('static', filename="vendor/nivo-slider/themes/light/light.css" ) }}
+	type="text/css" media="screen" />
+<link rel="stylesheet" href={{ url_for('static', filename="vendor/nivo-slider/themes/dark/dark.css" ) }} type="text/css"
+	media="screen" />
+<link rel="stylesheet" href={{ url_for('static', filename="vendor/nivo-slider/themes/bar/bar.css" ) }} type="text/css"
+	media="screen" />
+<link rel="stylesheet" href={{ url_for('static', filename="vendor/nivo-slider/nivo-slider.css" ) }} type="text/css"
+	media="screen" />
+{% endblock %}
+
+{% block main %}
+<!-- Start: Slider -->
+<div class="full-wrapper slider-container">
+	<div class="wrapper">
+		<div class="slider-section">
+			<div class="slider-wrapper theme-dark">
+				<div id="slider" class="nivoSlider">
+					<img src={{ url_for('static', filename="images/slide01.jpg" ) }} title="First Slide Image" />
+					<img src={{ url_for('static', filename="images/slide02.jpg" ) }} title="Second Slide Image" />
+					<img src={{ url_for('static', filename="images/slide03.jpg" ) }} title="Third Slide Image" />
+					<img src={{ url_for('static', filename="images/slide04.jpg" ) }} title="Fourth Slide Image" />
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- End: Slider -->
+
+<!-- content part start -->
+<section class="full-wrapper content-bg clear">
+	<div class="wrapper clear">
+		<div class="content-section clear">
+			<div class="content-left clear ">
+				<h2>Latest offers</h2>
+				<div class="same-content ">
+					<img src={{ url_for('static', filename="images/products/resturent1.jpg" ) }}>
+					<div class="content-group ">
+						<h3>indioliga</h3>
+						<p>maurisque eros molest nunc anteget sed vel lacus mus semper. Anterd umnullam interdum
+							eros dui urnama urisque eros molest nunc anteget sed vel lacus mus semper. Anterd
+							umnullam interdum eros dui urna Anterd umnullam interdum eros dui urna urna Anterd
+							umnullam</p>
+						<a href="blog-post.html" class="float-right">Read more &raquo; </a>
+					</div>
+				</div>
+				<div class="same-content ">
+					<img src={{ url_for('static', filename="images/products/resturent4.jpg" ) }}>
+					<div class="content-group ">
+						<h3>indioliga</h3>
+						<p>maurisque eros molest nunc anteget sed vel lacus mus semper. Anterd umnullam interdum
+							eros dui urnama urisque eros molest nunc anteget sed vel lacus mus semper. Anterd
+							umnullam interdum eros dui urna Anterd umnullam interdum eros dui urna urna Anterd
+							umnullam</p>
+						<a href="blog-post.html" class="float-right">Read more &raquo; </a>
+					</div>
+				</div>
+				<div class="same-content ">
+					<img src={{ url_for('static', filename="images/products/resturent6.jpg" ) }}>
+					<div class="content-group ">
+						<h3>indioliga</h3>
+						<p>maurisque eros molest nunc anteget sed vel lacus mus semper. Anterd umnullam interdum
+							eros dui urnama urisque eros molest nunc anteget sed vel lacus mus semper. Anterd
+							umnullam interdum eros dui urna Anterd umnullam interdum eros dui urna urna Anterd
+							umnullam</p>
+						<a href="blog-post.html" class="float-right">Read more &raquo; </a>
+					</div>
+				</div>
+			</div>
+			<div class="content-right clear">
+				<h2>Recent offers</h2>
+				<div class="same-content ">
+					<img src={{ url_for('static', filename="images/products/resturent2.jpg" ) }}>
+					<div class="content-group ">
+						<h3>indioliga</h3>
+						<p>maurisque eros molest nunc anteget sed vel lacus mus semper. Anterd umnullam interdum
+							eros dui urnama urisque eros molest nunc anteget sed vel lacus mus semper. Anterd
+							umnullam interdum eros dui urna Anterd umnullam interdum eros dui urna urna Anterd
+							umnullam</p>
+						<a href="blog-post.html" class="float-right">Read more &raquo; </a>
+					</div>
+				</div>
+				<div class="same-content ">
+					<img src={{ url_for('static', filename="images/products/resturent3.jpg" ) }}>
+					<div class="content-group ">
+						<h3>indioliga</h3>
+						<p>maurisque eros molest nunc anteget sed vel lacus mus semper. Anterd umnullam interdum
+							eros dui urnama urisque eros molest nunc anteget sed vel lacus mus semper. Anterd
+							umnullam interdum eros dui urna Anterd umnullam interdum eros dui urna urna Anterd
+							umnullam</p>
+						<a href="blog-post.html" class="float-right">Read more &raquo; </a>
+					</div>
+				</div>
+				<div class="same-content ">
+					<img src={{ url_for('static', filename="images/products/resturent8.jpg" ) }}>
+					<div class="content-group ">
+						<h3>indioliga</h3>
+						<p>maurisque eros molest nunc anteget sed vel lacus mus semper. Anterd umnullam interdum
+							eros dui urnama urisque eros molest nunc anteget sed vel lacus mus semper. Anterd
+							umnullam interdum eros dui urna Anterd umnullam interdum eros dui urna urna Anterd
+							umnullam</p>
+						<a href="blog-post.html" class="float-right">Read more &raquo; </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="sidebar clear">
+			<div class="sidebar-content clear">
+				<h2>Latest artical</h2>
+				<ul>
+					<li><a href="#">slide bar Aeticale one</a></li>
+					<li><a href="#">slide bar Aeticale two</a></li>
+					<li><a href="#">slide bar Aeticale three</a></li>
+					<li><a href="#">slide bar Aeticale Four</a></li>
+
+				</ul>
+			</div>
+			<div class="sidebar-content clear">
+				<h2>Our Description</h2>
+				<ul>
+					<li><a href="#">Our Description one</a></li>
+					<li><a href="#">Our Description two</a></li>
+					<li><a href="#">Our Description three</a></li>
+					<li><a href="#">Our Description Four</a></li>
+
+				</ul>
+			</div>
+			<div class="sidebar-content clear">
+				<h2>Blog post </h2>
+				<ul>
+					<li><a href="#">Our Blog post one</a></li>
+					<li><a href="#">Our Blog post two</a></li>
+					<li><a href="#">Our Blog post three</a></li>
+					<li><a href="#">Our Blog post Four</a></li>
+				</ul>
+			</div>
+			<div class="sidebar-content clear">
+				<h2>America Review </h2>
+				<ul>
+					<li><a href="#">Our America Review one</a></li>
+					<li><a href="#">Our America Review two</a></li>
+					<li><a href="#">Our America Review three</a></li>
+					<li><a href="#">Our America Revie Four</a></li>
+				</ul>
+			</div>
+			<div class="sidebar-content clear">
+				<h2>Contact Me </h2>
+				<form>
+					<table>
+						<tr>
+							<td>
+								<input type="text" placeholder="Enter your full name" class="tf">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="number" placeholder="Enter your number" class="tf">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="email" placeholder="Enter your email" class="tf">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="password" placeholder="Enter your password" class="tf">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="submit" placeholder="submit" class="tn">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- content part emd -->
+{% endblock %}
+
+{% block externalScripts %}
+<script type="text/javascript" src={{ url_for('static', filename="vendor/jquery/jquery.min.js" ) }}></script>
+<script type="text/javascript" src={{ url_for('static', filename="vendor/nivo-slider/jquery.nivo.slider.js" )
+	}}></script>
+{% endblock %}
