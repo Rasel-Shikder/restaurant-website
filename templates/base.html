@@ -14,9 +14,8 @@
     <link rel="stylesheet" type="text/css" href={{ url_for('static',
         filename="vendor/fontawesome/fontawesome.all.min.css" ) }}>
 
-    <script type="text/javascript" src={{ url_for('static', filename="vendor/fontawesome/fontawesome.min.js" )
-        }}></script>
-    <script type="text/javascript" src={{ url_for('static', filename="vendor/fontawesome/all.min.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/fontawesome/fontawesome.min.js" ) }}></script>
+    <script src={{ url_for('static', filename="vendor/fontawesome/all.min.js" ) }}></script>
 
     <!-- default css -->
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="default.css" ) }}>
@@ -103,8 +102,7 @@
         </div>
     </footer>
 
-    <script type="text/javascript" src={{ url_for('static', filename="js/scroll_to_top.js" ) }}></script>
-    <script type="text/javascript" src={{ url_for('static', filename="default.js" ) }}></script>
+    <script src={{ url_for('static', filename="js/scroll_to_top.js" ) }}></script>
 
     {% block externalScripts %}{% endblock %}
 </body>
