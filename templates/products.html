@@ -7,30 +7,306 @@
             <div class="product-part">
                 <h2>Introduction to Our Product</h2>
                 <article class="product">
-                    <figure>
+                    <figure title="Product 1">
                         <img src={{ url_for('static', filename="images/products/product1.jpg" )}}
-                            title="Product1 Image">
-                        <figcaption>Product 1</figcaption>
+                            title="Product 1 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 1</div>
+                                <div class="price">214</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product1" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
                     </figure>
-                    <img src={{ url_for('static', filename="images/products/product2.jpg" )}} title="Product2 Image">
-                    <img src={{ url_for('static', filename="images/products/product3.jpg" )}} title="Product3 Image">
-                    <img src={{ url_for('static', filename="images/products/product4.jpg" )}} title="Product4 Image">
-                    <img src={{ url_for('static', filename="images/products/product5.jpg" )}} title="Product5 Image">
-                    <img src={{ url_for('static', filename="images/products/product6.jpg" )}} title="Product6 Image">
-                    <img src={{ url_for('static', filename="images/products/product7.jpg" )}} title="Product7 Image">
-                    <img src={{ url_for('static', filename="images/products/product8.jpg" )}} title="Product8 Image">
-                    <img src={{ url_for('static', filename="images/products/product9.jpg" )}} title="Product9 Image">
-                    <img src={{ url_for('static', filename="images/products/product10.jpg" )}} title="Product10 Image">
-                    <img src={{ url_for('static', filename="images/products/product11.jpg" )}} title="Product11 Image">
-                    <img src={{ url_for('static', filename="images/products/product12.jpg" )}} title="Product12 Image">
-                    <img src={{ url_for('static', filename="images/products/product13.jpg" )}} title="Product13 Image">
-                    <img src={{ url_for('static', filename="images/products/product14.jpg" )}} title="Product14 Image">
-                    <img src={{ url_for('static', filename="images/products/product15.jpg" )}} title="Product15 Image">
-                    <img src={{ url_for('static', filename="images/products/product16.jpg" )}} title="Product16 Image">
-                    <img src={{ url_for('static', filename="images/products/product17.jpg" )}} title="Product17 Image">
-                    <img src={{ url_for('static', filename="images/products/product18.jpg" )}} title="Product18 Image">
-                    <img src={{ url_for('static', filename="images/products/product19.jpg" )}} title="Product19 Image">
-                    <img src={{ url_for('static', filename="images/products/product20.jpg" )}} title="Product20 Image">
+                    <figure title="Product 2">
+                        <img src={{ url_for('static', filename="images/products/product2.jpg" )}}
+                            title="Product 2 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 2</div>
+                                <div class="price">328</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product2" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 3">
+                        <img src={{ url_for('static', filename="images/products/product3.jpg" )}}
+                            title="Product 3 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 3</div>
+                                <div class="price">199</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product3" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 4">
+                        <img src={{ url_for('static', filename="images/products/product4.jpg" )}}
+                            title="Product 4 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 4</div>
+                                <div class="price">412</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product4" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 5">
+                        <img src={{ url_for('static', filename="images/products/product5.jpg" )}}
+                            title="Product 5 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 5</div>
+                                <div class="price">475</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product5" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 6">
+                        <img src={{ url_for('static', filename="images/products/product6.jpg" )}}
+                            title="Product 6 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 6</div>
+                                <div class="price">84</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product6" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 7">
+                        <img src={{ url_for('static', filename="images/products/product7.jpg" )}}
+                            title="Product 7 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 7</div>
+                                <div class="price">67</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product7" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 8">
+                        <img src={{ url_for('static', filename="images/products/product8.jpg" )}}
+                            title="Product 8 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 8</div>
+                                <div class="price">391</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product8" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 9">
+                        <img src={{ url_for('static', filename="images/products/product9.jpg" )}}
+                            title="Product 9 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 9</div>
+                                <div class="price">133</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product9" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 10">
+                        <img src={{ url_for('static', filename="images/products/product10.jpg" )}}
+                            title="Product 10 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 10</div>
+                                <div class="price">288</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product10" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 11">
+                        <img src={{ url_for('static', filename="images/products/product11.jpg" )}}
+                            title="Product 11 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 11</div>
+                                <div class="price">378</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product11" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 12">
+                        <img src={{ url_for('static', filename="images/products/product12.jpg" )}}
+                            title="Product 12 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 12</div>
+                                <div class="price">130</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product12" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 13">
+                        <img src={{ url_for('static', filename="images/products/product13.jpg" )}}
+                            title="Product 13 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 13</div>
+                                <div class="price">136</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product13" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 14">
+                        <img src={{ url_for('static', filename="images/products/product14.jpg" )}}
+                            title="Product 14 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 14</div>
+                                <div class="price">148</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product14" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 15">
+                        <img src={{ url_for('static', filename="images/products/product15.jpg" )}}
+                            title="Product 15 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 15</div>
+                                <div class="price">432</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product15" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 16">
+                        <img src={{ url_for('static', filename="images/products/product16.jpg" )}}
+                            title="Product 16 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 16</div>
+                                <div class="price">82</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product16" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 17">
+                        <img src={{ url_for('static', filename="images/products/product17.jpg" )}}
+                            title="Product 17 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 17</div>
+                                <div class="price">496</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product17" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 18">
+                        <img src={{ url_for('static', filename="images/products/product18.jpg" )}}
+                            title="Product 18 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 18</div>
+                                <div class="price">458</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product18" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 19">
+                        <img src={{ url_for('static', filename="images/products/product19.jpg" )}}
+                            title="Product 19 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 19</div>
+                                <div class="price">263</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product19" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
+                    <figure title="Product 20">
+                        <img src={{ url_for('static', filename="images/products/product20.jpg" )}}
+                            title="Product 20 Image">
+                        <figcaption>
+                            <div class="info">
+                                <div class="name">Product 20</div>
+                                <div class="price">437</div>
+                            </div>
+                            <div class="btn-group">
+                                <a href="/product-details/product20" class="btn-outlined">Details</a>
+                                <a href="/checkout" class="btn-solid">Buy Now</a>
+                                <a href="#" class="btn-solid"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                            </div>
+                        </figcaption>
+                    </figure>
                 </article>
             </div>
         </div>

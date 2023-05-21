@@ -509,21 +509,65 @@ a:hover {
     border-radius: 7px;
 }
 
-.product img {}
-
 .product figcaption {
-    text-align: center;
     display: block;
 }
 
-.product img {}
+.product figcaption .info,
+.product figcaption .btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.product figcaption .price {
+    font-weight: bold;
+}
+
+.product figcaption .price::before {
+    content: '৳';
+    font-size: small;
+}
 
 .product img:hover {
     transform: scale(1);
     transition: all 1s ease;
 }
 
+.product figcaption .btn-group {
+    margin-bottom: 3px;
+}
+
+.product figcaption .btn-group a {
+    border: 1px solid #ff8383;
+    font-weight: bold;
+    padding: 4px 7px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.product figcaption .btn-solid {
+    background-color: #ff8383;
+    color: white;
+}
+
+.product figcaption .btn-solid:hover {
+    background-color: transparent;
+    color: #ff8383;
+}
+
+.product figcaption .btn-outlined {
+    color: #ff8383;
+}
+
+.product figcaption .btn-outlined:hover {
+    background-color: #ff8383;
+    color: white;
+}
+
 /*product part end*/
+
 /*contact part start*/
 .contact-part {}
 
