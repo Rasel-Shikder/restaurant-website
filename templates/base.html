@@ -6,21 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saffron Restaurant</title>
-    <link rel="stylesheet" href={{ url_for('static', filename="default.css" )}} type="text/css" media="screen" />
-    <!-- fontawesome css and js links  -->
 
-    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="vendor/fontawesome/fontawesome.min.css" )
-        }}>
+    <!-- fontawesome css and js links  -->
     <link rel="stylesheet" type="text/css" href={{ url_for('static',
         filename="vendor/fontawesome/fontawesome.all.min.css" ) }}>
-
-    <script src={{ url_for('static', filename="vendor/fontawesome/fontawesome.min.js" ) }}></script>
     <script src={{ url_for('static', filename="vendor/fontawesome/all.min.js" ) }}></script>
+
+    {% block externalHeadIncludes %} {% endblock %}
 
     <!-- default css -->
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename="default.css" ) }}>
-
-    {% block externalHeadIncludes %} {% endblock %}
 </head>
 
 <body>

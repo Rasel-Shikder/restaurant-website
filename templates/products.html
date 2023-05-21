@@ -4,10 +4,14 @@
 <div class="full-wrapper content-bg clear">
     <div class="wrapper clear">
         <div class="content-section clear">
-            <di class="product-part">
+            <div class="product-part">
                 <h2>Introduction to Our Product</h2>
-                <div class="product">
-                    <img src={{ url_for('static', filename="images/products/product1.jpg" )}} title="Product1 Image">
+                <article class="product">
+                    <figure>
+                        <img src={{ url_for('static', filename="images/products/product1.jpg" )}}
+                            title="Product1 Image">
+                        <figcaption>Product 1</figcaption>
+                    </figure>
                     <img src={{ url_for('static', filename="images/products/product2.jpg" )}} title="Product2 Image">
                     <img src={{ url_for('static', filename="images/products/product3.jpg" )}} title="Product3 Image">
                     <img src={{ url_for('static', filename="images/products/product4.jpg" )}} title="Product4 Image">
@@ -27,8 +31,8 @@
                     <img src={{ url_for('static', filename="images/products/product18.jpg" )}} title="Product18 Image">
                     <img src={{ url_for('static', filename="images/products/product19.jpg" )}} title="Product19 Image">
                     <img src={{ url_for('static', filename="images/products/product20.jpg" )}} title="Product20 Image">
-                </div>
-            </di>
+                </article>
+            </div>
         </div>
 
         <div class="sidebar clear">
