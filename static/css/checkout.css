@@ -1,0 +1,54 @@
+.checkout-container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+.frm-checkout input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.frm-checkout label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.frm-checkout .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.frm-checkout .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.frm-checkout .btn:hover {
+    background-color: #45a049;
+}
+
+.frm-checkout a {
+    color: #2196F3;
+}
+
+.frm-checkout hr {
+    border: 1px solid lightgrey;
+}
+
+.frm-checkout span.price {
+    float: right;
+    color: grey;
+}
