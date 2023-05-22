@@ -10,7 +10,7 @@
     {
         "id": 2,
         "product_name": "Product 2",
-        "available_qty": 15,
+        "available_qty": 0,
         "price": 227.23,
         "image_url": "images/products/product2.jpg",
         "details": "This is a dummy product with ID 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit."

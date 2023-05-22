@@ -84,6 +84,61 @@
                 <span><i class="fa fa-search" aria-hidden="true"></i></span>
             </form>
         </div>
+        <a href="javascript:void(0);" class="btn-cart" id="btnCart">
+            <i class="fa fa-shopping-cart"></i>
+            <span class="badge" class="count-cart-items">0</span>
+        </a>
+        <div class="cart-modal" id="cartModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart (<span
+                            class="count-cart-items">0</span>)
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <table id="cartItems">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th></th>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Qty.</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#</td>
+                                <td></td>
+                                <td>Product Name</td>
+                                <td>Unit Price</td>
+                                <td>&times; <input type="number" id="qty" class="input-qty"
+                                        title="Input Product Quantity" min="1" value="1" />
+                                </td>
+                                <td>
+                                    <option value="0" id="price"></option>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td id="total">Total</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn">Continue to Checkout</a>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- End: Navigation and Search -->
 
@@ -98,6 +153,8 @@
     </footer>
 
     <script src={{ url_for('static', filename="js/scroll_to_top.js" ) }}></script>
+    <script src={{ url_for('static', filename="js/cart.js" ) }}></script>
+    <script src={{ url_for('static', filename="default.js" ) }}></script>
 
     {% block externalScripts %}{% endblock %}
 </body>
