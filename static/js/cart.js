@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${productName}</td>
                     <td>${unitPrice}</td>
                     <td>&times; <input type="number" id="qty" class="input-qty"
-                            title="Input Product Quantity" min="2" max="${availableQty - qty}" value="${qty}" />
+                            title="Input Product Quantity" min="1" max="${availableQty}" value="${qty}" />
                     </td>
                     <td>
                         <output id="price">${unitPrice * qty}</output>
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         newData.push({
                             id: ++currentId,
                             productName: each.dataset.productName,
+                            availableQty: each.dataset.availableQty,
                             qty: 1,
                             unitPrice: parseFloat(each.dataset.unitPrice),
                             imageUrl: each.dataset.imageUrl
