@@ -24,7 +24,7 @@ def products():
         "id": each_product[0],
         "product_name": each_product[1],
         "available_qty": each_product[2],
-        "price": each_product[3],
+        "unit_price": each_product[3],
         "image_url": each_product[4],
         "details": each_product[5]
     })

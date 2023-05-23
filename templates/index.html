@@ -109,78 +109,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="sidebar clear">
-			<div class="sidebar-content clear">
-				<h2>Latest artical</h2>
-				<ul>
-					<li><a href="#">slide bar Aeticale one</a></li>
-					<li><a href="#">slide bar Aeticale two</a></li>
-					<li><a href="#">slide bar Aeticale three</a></li>
-					<li><a href="#">slide bar Aeticale Four</a></li>
-
-				</ul>
-			</div>
-			<div class="sidebar-content clear">
-				<h2>Our Description</h2>
-				<ul>
-					<li><a href="#">Our Description one</a></li>
-					<li><a href="#">Our Description two</a></li>
-					<li><a href="#">Our Description three</a></li>
-					<li><a href="#">Our Description Four</a></li>
-
-				</ul>
-			</div>
-			<div class="sidebar-content clear">
-				<h2>Blog post </h2>
-				<ul>
-					<li><a href="#">Our Blog post one</a></li>
-					<li><a href="#">Our Blog post two</a></li>
-					<li><a href="#">Our Blog post three</a></li>
-					<li><a href="#">Our Blog post Four</a></li>
-				</ul>
-			</div>
-			<div class="sidebar-content clear">
-				<h2>America Review </h2>
-				<ul>
-					<li><a href="#">Our America Review one</a></li>
-					<li><a href="#">Our America Review two</a></li>
-					<li><a href="#">Our America Review three</a></li>
-					<li><a href="#">Our America Revie Four</a></li>
-				</ul>
-			</div>
-			<div class="sidebar-content clear">
-				<h2>Contact Me </h2>
-				<form>
-					<table>
-						<tr>
-							<td>
-								<input type="text" placeholder="Enter your full name" class="tf">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="number" placeholder="Enter your number" class="tf">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="email" placeholder="Enter your email" class="tf">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="password" placeholder="Enter your password" class="tf">
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<input type="submit" placeholder="submit" class="tn">
-							</td>
-						</tr>
-					</table>
-				</form>
-			</div>
-		</div>
+		{% include 'sidebar.html' %}
 	</div>
 </section>
 <!-- content part emd -->
@@ -188,8 +117,7 @@
 
 {% block externalScripts %}
 <script src={{ url_for('static', filename="vendor/jquery/jquery.min.js" ) }}></script>
-<script src={{ url_for('static', filename="vendor/nivo-slider/jquery.nivo.slider.js" )
-	}}></script>
+<script src={{ url_for('static', filename="vendor/nivo-slider/jquery.nivo.slider.js" ) }}></script>
 <script>
 	$(window).load(function () {
 		$('#slider').nivoSlider();

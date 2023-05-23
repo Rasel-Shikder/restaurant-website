@@ -15,18 +15,19 @@
                         <figcaption>
                             <div class="info">
                                 <div class="name">{{ each['product_name'] }}</div>
-                                <div class="price">{{ each['price'] }}</div>
+                                <div class="unit-price">{{ each['unit_price'] }}</div>
                             </div>
                             <div class="btn-group">
                                 <a href="/product-details/{{ each['product_name'] }}" class="btn-outlined"
                                     title="View Product Details">Details</a>
                                 <a {{ '' if product_not_available else 'href="/checkout"' }}
                                     class=" btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
-                                    title="Buy this Product">Buy Now</a>
+                                    title="Buy this Product" id="btnBuyNow">Buy Now</a>
                                 <a id="btnAddToCart"
                                     class="btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Add to Cart" data-product-name="{{ each['product_name'] }}"
-                                    data-available-qty="{{ each['available_qty'] }}" data-price="{{ each['price'] }}"
+                                    data-available-qty="{{ each['available_qty'] }}"
+                                    data-unit-price="{{ each['unit_price'] }}"
                                     data-image-url="{{ each['image_url'] }}"><i class="fa fa-cart-plus"
                                         aria-hidden="true"></i></a>
                             </div>
@@ -36,50 +37,8 @@
                 </article>
             </div>
         </div>
-
-        <div class="sidebar clear">
-            <div class="sidebar-content clear">
-                <h2>Latest artical</h2>
-                <ul>
-                    <li><a href="#">slide bar Aeticale one</a></li>
-                    <li><a href="#">slide bar Aeticale two</a></li>
-                    <li><a href="#">slide bar Aeticale three</a></li>
-                    <li><a href="#">slide bar Aeticale Four</a></li>
-
-                </ul>
-            </div>
-            <div class="sidebar-content clear">
-                <h2>Our Description</h2>
-                <ul>
-                    <li><a href="#">Our Description one</a></li>
-                    <li><a href="#">Our Description two</a></li>
-                    <li><a href="#">Our Description three</a></li>
-                    <li><a href="#">Our Description Four</a></li>
-
-                </ul>
-            </div>
-            <div class="sidebar-content clear">
-                <h2>Vlog post </h2>
-                <ul>
-                    <li><a href="#">Our Vlog post one</a></li>
-                    <li><a href="#">Our Vlog post two</a></li>
-                    <li><a href="#">Our Vlog post three</a></li>
-                    <li><a href="#">Our Vlog post Four</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-content clear">
-                <h2>America Review </h2>
-                <ul>
-                    <li><a href="#">Our America Review one</a></li>
-                    <li><a href="#">Our America Review two</a></li>
-                    <li><a href="#">Our America Review three</a></li>
-                    <li><a href="#">Our America Revie Four</a></li>
-                </ul>
-            </div>
-            <div class="sidebar-content clear">
-            </div>
-        </div>
-
+        {% include 'sidebar.html' %}
     </div>
+</div>
 </div>
 {% endblock %}

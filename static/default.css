@@ -357,14 +357,12 @@ a:hover {
 }
 
 .tf {
-    width: 223px;
     padding: 8px 10px;
     border-radius: 8px;
     margin-top: 4px;
 }
 
 .tn {
-    width: 52px;
     font-size: 13px;
     padding: 3px;
     border-radius: 8px;
@@ -521,11 +519,11 @@ a:hover {
     margin-right: 3px;
 }
 
-.product figcaption .price {
+.product figcaption .unit-price {
     font-weight: bold;
 }
 
-.product figcaption .price::before {
+.product figcaption .unit-price::before {
     content: '৳';
     font-size: small;
 }
