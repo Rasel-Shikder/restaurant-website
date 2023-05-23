@@ -1,5 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const localStorageCartItems = JSON.parse(localStorage.getItem('cartItems')) || []
+    const updateCart = () => {
+        const localStorageData = JSON.parse(localStorage.getItem('cartItems'))
+
+        const tempCartItem = (id, imageUrl, productName, unitPrice, availableQty, qty) => `<tr>
+                    <td>${id}</td>
+                    <td>${imageUrl}</td>
+                    <td>${productName}</td>
+                    <td>${unitPrice}</td>
+                    <td>&times; <input type="number" id="qty" class="input-qty"
+                            title="Input Product Quantity" min="2" max="${availableQty - qty}" value="${qty}" />
+                    </td>
+                    <td>
+                        <output id="price">${unitPrice * qty}</output>
+                    </td>
+                </tr>`
+
+        if (localStorageData !== null) {
+            const cartItems = document.querySelector("#cartItems tbody")
+            localStorageData.forEach(each => {
+                cartItems.innerHTML = ''
+                cartItems.innerHTML += tempCartItem(each.id, each.imageUrl, each.productName, each.unitPrice, each.availableQty, each.qty)
+            })
+        }
+    }
+    updateCart()
+
+    const localStorageCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    let currentId = 0;
 
     document.querySelectorAll("#btnAddToCart").forEach(each => {
         each.addEventListener('click', (event) => {
@@ -8,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const newData = localStorageCartItems
                     if (!newData.some(e => e.productName === each.dataset.productName)) {
                         newData.push({
+                            id: ++currentId,
                             productName: each.dataset.productName,
                             qty: 1,
                             unitPrice: parseFloat(each.dataset.unitPrice),
@@ -32,6 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     localStorage.setItem('cartItems', JSON.stringify(newData))
+
+                    setTimeout(() => {
+                        updateCart()
+                    });
                 }
             }
         })
