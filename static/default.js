@@ -42,4 +42,44 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     document.querySelector("#totalToCheckout").innerHTML = parseFloat(totalPrice)
+
+    function disableMobileBanking(isTrue) {
+        const elems = document.querySelectorAll('#mobileBankingInfo select, #mobileBankingInfo input');
+        elems.forEach(function (element) {
+            element.disabled = isTrue;
+        });
+    }
+
+    function disableCard(isTrue) {
+        const elems = document.querySelectorAll('.card-part input');
+        elems.forEach(function (element) {
+            element.disabled = isTrue;
+        });
+    }
+
+    disableMobileBanking(true)
+    disableCard(true)
+
+    var card = document.querySelector('#card')
+    card.addEventListener('click', (e) => {
+        disableMobileBanking(true)
+        disableCard(false)
+    });
+
+    var cod = document.querySelector('#cod');
+    cod.addEventListener('click', (e) => {
+        disableMobileBanking(true)
+        disableCard(true)
+    });
+
+    var mobileBanking = document.querySelector('#mobileBanking');
+    mobileBanking.addEventListener('click', (e) => {
+        disableMobileBanking(false)
+        disableCard(true)
+    });
+
+    if (window.location.pathname === '/checkout') {
+        document.querySelector("#btnCart").style.display = "none"
+    }
+
 })

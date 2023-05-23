@@ -1,11 +1,14 @@
 .checkout-container {
     background-color: #f2f2f2;
-    padding: 5px 20px 15px 20px;
+    padding: 35px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
 }
 
-.frm-checkout input[type=text] {
+.frm-checkout input[type=text],
+.frm-checkout input[type=date],
+.frm-checkout textarea,
+.frm-checkout select {
     width: 97%;
     margin-bottom: 20px;
     padding: 12px;
@@ -24,8 +27,8 @@
     font-size: 24px;
 }
 
-.frm-checkout .btn {
-    background-color: #04AA6D;
+.btnCheckout {
+    background-color: #ff8383;
     color: white;
     padding: 12px;
     margin: 10px 0;
@@ -36,8 +39,8 @@
     font-size: 17px;
 }
 
-.frm-checkout .btn:hover {
-    background-color: #45a049;
+.btnCheckout:hover {
+    background-color: #f3b1b1;
 }
 
 .frm-checkout a {
@@ -51,4 +54,14 @@
 .frm-checkout span.price {
     float: right;
     color: grey;
+}
+
+.product-list {
+    overflow-y: auto;
+    max-width: 925px;
+}
+
+.payment,
+.payment-label {
+    display: inline;
 }

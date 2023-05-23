@@ -13,65 +13,82 @@
 				<h2>Checkout</h2>
 				<div class="checkout-container">
 					<form class="frm-checkout">
+						<h3>Billing Address</h3>
+						<input type="text" id="name" name="name" placeholder="Name *" required>
+						<input type="text" id="email" name="email" placeholder="Email Address">
+						<input type="text" id="billingAddress" name="billingAddress" placeholder="Billing Address *">
+						<input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number *">
+						<textarea name="additional" id="additional" cols="30" rows="10"></textarea>
 
-						<div class="row">
-							<div class="col-50">
-								<h3>Billing Address</h3>
-								<label for="fname"><i class="fa fa-user"></i> Full Name</label>
-								<input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-								<label for="email"><i class="fa fa-envelope"></i> Email</label>
-								<input type="text" id="email" name="email" placeholder="john@example.com">
-								<label for="adr"><i class="fa fa-address-card"></i> Address</label>
-								<input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-								<label for="city"><i class="fa fa-map-pin" aria-hidden="true"></i> City</label>
-								<input type="text" id="city" name="city" placeholder="New York">
 
-								<div class="row">
-									<div class="col-50">
-										<label for="state">State</label>
-										<input type="text" id="state" name="state" placeholder="NY">
-									</div>
-									<div class="col-50">
-										<label for="zip">Zip</label>
-										<input type="text" id="zip" name="zip" placeholder="10001">
-									</div>
-								</div>
-							</div>
 
-							<div class="col-50">
-								<h3>Payment</h3>
-								<label for="fname">Accepted Cards</label>
+						<h3>Shipping Address</h3>
+						<textarea name="shippingAddress" id="shippingAddress" cols="30" rows="10" re></textarea>
+
+						<h3>Payment</h3>
+						<div class="form-check">
+							<input class="payment" type="radio" value="Card" id="card" name="payment" required />
+							<label class="form-check-label payment-label" for="card">
+								Credit/Debit Card
+							</label>
+
+							<!-- Card Part -->
+							<div class="card-part">
 								<div class="icon-container">
 									<i class="fab fa-brands fa-cc-visa" style="color:navy;"></i>
 									<i class="fab fa-cc-amex" style="color:blue;"></i>
 									<i class="fab fa-cc-mastercard" style="color:red;"></i>
 									<i class="fab fa-cc-discover" style="color:orange;"></i>
 								</div>
-								<label for="cname">Name on Card</label>
-								<input type="text" id="cname" name="cardname" placeholder="John More Doe">
-								<label for="ccnum">Credit card number</label>
-								<input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-								<label for="expmonth">Exp Month</label>
-								<input type="text" id="expmonth" name="expmonth" placeholder="September">
-								<div class="row">
-									<div class="col-50">
-										<label for="expyear">Exp Year</label>
-										<input type="text" id="expyear" name="expyear" placeholder="2018">
-									</div>
-									<div class="col-50">
-										<label for="cvv">CVV</label>
-										<input type="text" id="cvv" name="cvv" placeholder="352">
-									</div>
+								<label for="cardNumber">Card Number</label>
+								<input type="text" id="cardNumber" name="cardNumber"
+									pattern="^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$"
+									required>
+
+								<label for="cardName">Cardholder Name</label>
+								<input type="text" id="cardName" name="cardName" pattern="[A-Z]*" required>
+
+								<label for="expiryDate">Expiry Date</label>
+								<input type="date" id="expiryDate" name="expiryDate" required>
+
+								<label for="cvv">CVV</label>
+								<input type="text" id="cvv" name="cvv" required>
+							</div>
+							<input class="payment" type="radio" value="COD" id="cod" name="payment" required />
+							<label class="form-check-label payment-label" for="cod">
+								Cash On Delivery
+							</label>
+							<br />
+							<input class="payment" type="radio" value="mobileBanking" id="mobileBanking" name="payment"
+								required />
+							<label class="form-check-label payment-label" for="mobileBanking">
+								Mobile Banking
+							</label>
+							<div id="mobileBankingInfo">
+
+								<div>
+									<select class="form-control" id="mobileBankingAccount" name="mobileBankingAccount"
+										style="width: 125px;">
+										<option value="Bkash">Bkash</option>
+										<option value="Nagad">Nagad</option>
+									</select>
+									<select class="form-control" name="accType" style="width: 125px;">
+										<option value="Personal">Personal</option>
+										<option value="Agent">Agent</option>
+									</select>
+									<input type="text" class="form-control" name="accNumber" style="width: 220px;"
+										placeholder="Account Number" required />
+								</div>
+								<div class="form-text">
+									Our Bkash/Nagad Account No.: +880 171* *** ***
 								</div>
 							</div>
-
 						</div>
-						<label>
-							<input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-						</label>
-						<input type="submit" value="Continue to checkout" class="btn">
-					</form>
 				</div>
+				<button type="submit" class="btnCheckout">Continue to Checkout</button>
+
+
+				</form>
 			</div>
 		</div>
 
@@ -106,7 +123,8 @@
 				<ul class="product-list" id="productList">
 				</ul>
 
-				<p style="text-align: right; font-weight: bold;">Total: &#2547; <output id="totalToCheckout">0</output></p>
+				<p style="text-align: right; font-weight: bold;">Total: &#2547; <output id="totalToCheckout">0</output>
+				</p>
 
 			</div>
 		</div>
