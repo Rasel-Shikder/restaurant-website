@@ -12,21 +12,19 @@
 			<div class="about-part">
 				<h2>Checkout</h2>
 				<div class="checkout-container">
-					<form class="frm-checkout">
+					<form class="frm-checkout" id="frmCheckout">
 						<h3>Billing Address</h3>
 						<input type="text" id="name" name="name" placeholder="Name *" required>
-						<input type="text" id="email" name="email" placeholder="Email Address">
+						<input type="text" id="email" name="email" placeholder="Email Address *" required>
 						<input type="text" id="billingAddress" name="billingAddress" placeholder="Billing Address *">
 						<input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number *">
 						<textarea name="additional" id="additional" cols="30" rows="10"></textarea>
-
-
 
 						<h3>Shipping Address</h3>
 						<textarea name="shippingAddress" id="shippingAddress" cols="30" rows="10" re></textarea>
 
 						<h3>Payment</h3>
-						<div class="form-check">
+						<div class="payment-part">
 							<input class="payment" type="radio" value="Card" id="card" name="payment" required />
 							<label class="form-check-label payment-label" for="card">
 								Credit/Debit Card
@@ -86,8 +84,6 @@
 						</div>
 				</div>
 				<button type="submit" class="btnCheckout">Continue to Checkout</button>
-
-
 				</form>
 			</div>
 		</div>

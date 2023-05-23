@@ -18,7 +18,6 @@
 
 .frm-checkout label {
     margin-bottom: 10px;
-    display: block;
 }
 
 .frm-checkout .icon-container {
@@ -64,4 +63,8 @@
 .payment,
 .payment-label {
     display: inline;
+}
+
+.payment-part {
+    padding: 20px;
 }

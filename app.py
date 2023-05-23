@@ -39,5 +39,13 @@ def contact():
 def checkout():
     return render_template('checkout.html')
 
+@app.route('/success')
+def success():
+    return render_template('success.html')
+
+@app.route('/failed')
+def failed():
+    return render_template('failed.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
