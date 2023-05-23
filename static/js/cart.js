@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const tempCartItem = (id, imageUrl, productName, unitPrice, availableQty, qty) => `<tr>
                     <td>${id}</td>
-                    <td>${imageUrl}</td>
+                    <td><img src="/static/${imageUrl}" title="${productName}" style="width: 100px;height:100px;"></td>
                     <td>${productName}</td>
                     <td>${unitPrice}</td>
                     <td>&times; <input type="number" id="qty" class="input-qty"
