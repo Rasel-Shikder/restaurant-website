@@ -11,17 +11,32 @@ document.addEventListener('DOMContentLoaded', () => {
                             title="Input Product Quantity" min="1" max="${availableQty}" value="${qty}" />
                     </td>
                     <td>
-                        <output id="price">${unitPrice * qty}</output>
+                        <output class="price">${unitPrice * qty}</output>
                     </td>
                 </tr>`
 
         if (localStorageData !== null) {
             const cartItems = document.querySelector("#cartItems tbody")
+            cartItems.innerHTML = ''
+
             localStorageData.forEach(each => {
-                cartItems.innerHTML = ''
                 cartItems.innerHTML += tempCartItem(each.id, each.imageUrl, each.productName, each.unitPrice, each.availableQty, each.qty)
             })
         }
+
+        // Updating total price
+        const total = document.querySelector("#total")
+
+        let currentTotal = 0;
+        document.querySelectorAll("#cartItems .price").forEach(each => {
+            currentTotal += Number(each.innerHTML)
+        })
+
+        total.innerHTML = parseFloat(currentTotal).toFixed(2)
+
+        // Updating cart item count
+
+
     }
     updateCart()
 
