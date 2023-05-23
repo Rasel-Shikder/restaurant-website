@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const localStorageData = JSON.parse(localStorage.getItem('cartItems'))
 
         const tempCartItem = (id, imageUrl, productName, unitPrice, availableQty, qty) => `<tr>
-                    <td>${id}</td>
-                    <td><img src="/static/${imageUrl}" title="${productName}" style="width: 100px;height:100px;"></td>
-                    <td>${productName}</td>
-                    <td>${unitPrice}</td>
-                    <td>&times; <input type="number" id="qty" class="input-qty"
+                    <td style="text-align:right;padding-right:10px;">${id}</td>
+                    <td style="text-align:left;"><img src="/static/${imageUrl}" title="${productName}" style="width: 100px;height:100px;"></td>
+                    <td style="text-align:center;">${productName}</td>
+                    <td style="text-align:right;">&#2547; ${unitPrice}</td>
+                    <td style="text-align:left;">&nbsp;&times; <input type="number" id="qty" class="input-qty"
                             title="Input Product Quantity" min="1" max="${availableQty}" value="${qty}" />
                     </td>
-                    <td>
-                        <output class="price">${unitPrice * qty}</output>
+                    <td style="text-align:right;padding-right:5px;">
+                        &#2547; <output class="price">${unitPrice * qty}</output>
                     </td>
                 </tr>`
 
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         total.innerHTML = parseFloat(currentTotal).toFixed(2)
 
         // Updating cart item count
-
-
+        const cartItemsTr = document.querySelectorAll("#cartItems tbody tr")
+        document.querySelectorAll('.count-cart-items').forEach(each => each.innerText = cartItemsTr.length)
     }
     updateCart()
 

@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.onclick = function () {
         modal.style.display = "block";
-        console.log('c');
     }
     span.onclick = function () {
         modal.style.display = "none";

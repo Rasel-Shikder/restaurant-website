@@ -86,7 +86,7 @@
         </div>
         <a href="javascript:void(0);" class="btn-cart" id="btnCart">
             <i class="fa fa-shopping-cart"></i>
-            <span class="badge" class="count-cart-items">0</span>
+            <span class="badge count-cart-items">0</span>
         </a>
         <div class="cart-modal" id="cartModal">
             <div class="modal-content">
@@ -97,19 +97,19 @@
                     </h3>
                 </div>
                 <div class="modal-body">
-                    <table id="cartItems">
+                    <table id="cartItems" class="cart-items">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th></th>
-                                <th>Product Name</th>
-                                <th>Unit Price</th>
-                                <th>Qty.</th>
-                                <th>Price</th>
+                                <th style="text-align: right;padding-right:10px;">#</th>
+                                <th style="text-align: left;"></th>
+                                <th style="text-align: center;">Product Name</th>
+                                <th style="text-align:right;">Unit Price</th>
+                                <th style="text-align:left;">Qty.</th>
+                                <th style="text-align:right;padding-right: 10px;">Price</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                         <tfoot>
                             <tr>
@@ -118,7 +118,7 @@
                                 <td></td>
                                 <td></td>
                                 <td></td>
-                                <td id="total">Total</td>
+                                <th style="text-align: right;">&#2547; <output id="total">0</output></th>
                             </tr>
                         </tfoot>
                     </table>
