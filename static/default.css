@@ -731,7 +731,6 @@ table.cart-items {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    border: 1px solid #ddd;
 }
 
 table.cart-items th {
@@ -740,7 +739,8 @@ table.cart-items th {
 
 table.cart-items tbody {
     display: block;
-    height: 300px;
+    width: calc(100% - 1em);
+    max-height: 300px;
     overflow: auto;
 }
 

@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td style="text-align:center;">${productName}</td>
                     <td style="text-align:right;">&#2547; ${unitPrice}</td>
                     <td style="text-align:left;">&nbsp;&times; <input type="number" id="qty" class="input-qty"
-                            title="Input Product Quantity" min="1" max="${availableQty}" value="${qty}" />
+                            title="Input Product Quantity" min="1" max="${availableQty}" value="${qty}" data-product-name="${productName}" />
                     </td>
                     <td style="text-align:right;padding-right:5px;">
-                        &#2547; <output class="price">${unitPrice * qty}</output>
+                        &#2547; <output class="price">${parseFloat(unitPrice * qty).toFixed(2)}</output>
                     </td>
                 </tr>`
 
@@ -85,4 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
+
+    setInterval(() => {
+        const cartQtyAll = document.querySelectorAll("#cartItems .input-qty")
+        cartQtyAll.forEach(each => {
+            each.addEventListener('input', (event) => {
+                const newData = localStorageCartItems
+                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.productName)
+                newData[targetIndex].qty = event.target.value
+
+                setTimeout(() => {
+                    localStorage.setItem('cartItems', JSON.stringify(newData))
+
+                    setTimeout(() => {
+                        updateCart()
+                    })
+                })
+            })
+        })
+    }, 100);
+
 })
