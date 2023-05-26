@@ -8,6 +8,7 @@ Urgent:
 - send invoice (\w pdf) to customer email
 - payment gateway for debit/credit card
 - payment gateway for bkash/nagad
+- hide cart table while no item is available and show an message for empty cart
 
 Others:
 
