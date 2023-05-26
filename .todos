@@ -1,1 +1,19 @@
+Urgent:
+
 - add delete button to cart
+- add details to application
+- buy now for each product
+- create invoice on product purchase
+- create an invoice template for email
+- send invoice (\w pdf) to customer email
+- payment gateway for debit/credit card
+- payment gateway for bkash/nagad
+
+Others:
+
+- complete contact page
+- modify about page
+- modify sidebar
+- modify home page
+- Optional: create a blog page \w some articles
+- search option for all products, pages and blog posts
