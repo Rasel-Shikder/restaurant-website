@@ -41,46 +41,97 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
-    document.querySelector("#totalToCheckout").innerHTML = parseFloat(totalPrice)
+    const totalToCheckout = document.querySelector("#totalToCheckout")
+    if (totalToCheckout) {
+        totalToCheckout.innerHTML = parseFloat(totalPrice)
+    }
 
     function disableMobileBanking(isTrue) {
         const elems = document.querySelectorAll('#mobileBankingInfo select, #mobileBankingInfo input');
         elems.forEach(function (element) {
-            element.disabled = isTrue;
+            if (element) {
+                element.disabled = isTrue;
+            }
         });
     }
 
     function disableCard(isTrue) {
         const elems = document.querySelectorAll('.card-part input');
         elems.forEach(function (element) {
-            element.disabled = isTrue;
+            if (element) {
+                element.disabled = isTrue;
+            }
         });
     }
 
     disableMobileBanking(true)
     disableCard(true)
 
-    var card = document.querySelector('#card')
-    card.addEventListener('click', (e) => {
-        alert("This feature is pending!")
-        disableMobileBanking(true)
-        disableCard(false)
-    });
+    const card = document.querySelector('#card')
+    if (card) {
+        card.addEventListener('click', (e) => {
+            alert("This feature is pending!")
+            disableMobileBanking(true)
+            disableCard(false)
+        });
+    }
 
-    var cod = document.querySelector('#cod');
-    cod.addEventListener('click', (e) => {
-        disableMobileBanking(true)
-        disableCard(true)
-    });
+    const cod = document.querySelector('#cod');
+    if (cod) {
+        cod.addEventListener('click', (e) => {
+            disableMobileBanking(true)
+            disableCard(true)
+        });
+    }
 
-    var mobileBanking = document.querySelector('#mobileBanking');
-    mobileBanking.addEventListener('click', (e) => {
-        disableMobileBanking(false)
-        disableCard(true)
-    });
+    const mobileBanking = document.querySelector('#mobileBanking');
+    if (mobileBanking) {
+        mobileBanking.addEventListener('click', (e) => {
+            disableMobileBanking(false)
+            disableCard(true)
+        });
+    }
 
+    // if current route is: /checkout
     if (window.location.pathname === '/checkout') {
         document.querySelector("#btnCart").style.display = "none"
     }
 
+    // Payment
+    const frmCheckout = document.getElementById("frmCheckout")
+    if (frmCheckout) {
+        frmCheckout.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const cus_name = document.getElementById("name").value;
+            const cus_email = document.getElementById("email").value;
+            const amount = document.getElementById("totalToCheckout").innerText;
+
+            const apikey = '646c6ba60e397'; // Your Api Key
+            const clientkey = '646c6ba613d49'; // Your Client Key
+            const secretkey = '84992251'; // Your Secret Key
+
+            const success_url = '/success';
+            const cancel_url = '/failed';
+            const hostname = '/';
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://pay.edokanpay.com/checkout.php");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    location.href = xhr.responseText;
+                }
+            };
+            const data = "api=" + encodeURIComponent(apikey) +
+                "&client=" + encodeURIComponent(clientkey) +
+                "&secret=" + encodeURIComponent(secretkey) +
+                "&amount=" + encodeURIComponent(amount) +
+                "&position=" + encodeURIComponent(hostname) +
+                "&success_url=" + encodeURIComponent(success_url) +
+                "&cancel_url=" + encodeURIComponent(cancel_url) +
+                "&cus_name=" + encodeURIComponent(cus_name) +
+                "&cus_email=" + encodeURIComponent(cus_email);
+            xhr.send(data);
+        });
+    }
 })

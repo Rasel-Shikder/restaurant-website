@@ -33,14 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let currentTotal = 0;
         document.querySelectorAll("#cartItems .price").forEach(each => {
-            currentTotal += Number(each.innerHTML)
+            if (each) {
+                currentTotal += Number(each.innerHTML)
+            }
         })
 
-        total.innerHTML = parseFloat(currentTotal).toFixed(2)
+        if (total) {
+            total.innerHTML = parseFloat(currentTotal).toFixed(2)
+        }
 
         // Updating cart item count
-        const cartItemsTr = document.querySelectorAll("#cartItems tbody tr")
-        document.querySelectorAll('.count-cart-items').forEach(each => each.innerText = cartItemsTr.length)
+        document.querySelectorAll('.count-cart-items').forEach(each => each.innerText = localStorageData ? localStorageData.length : "0")
     }
     updateCart()
 
