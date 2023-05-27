@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             btnAddToCart.classList.add('btn-disabled')
 
                             const btnBuyNow = btnAddToCart.previousElementSibling
-                            if (btnBuyNow.id === "btnBuyNow") {
+                            if (btnBuyNow.classList.contains('buy-now')) {
                                 btnBuyNow.classList.add('btn-disabled')
                             } else {
                                 console.error("previousElementSibling of #btnAddToCart is not #btnBuyNow. Check HTML code.")
