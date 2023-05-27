@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* End: Cart Modal */
 
     /* Start: Cart */
-    localStorage.setItem('cartItems', '[]')
     const localStorageCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     const updateCart = () => {
