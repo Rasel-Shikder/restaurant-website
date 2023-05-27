@@ -1,20 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     /* Start: Cart Modal */
-    const modal = document.getElementById("cartModal");
-    const btn = document.getElementById("btnCart");
-    const span = document.getElementsByClassName("close")[0];
+    const cartModal = document.getElementById("cartModal");
+    const btnCart = document.getElementById("btnCart");
+    const close = document.getElementsByClassName("close")[0];
 
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    btnCart.addEventListener("click", () => {
+        cartModal.style.display = "block";
+    });
+
+    close.addEventListener("click", () => {
+        cartModal.style.display = "none";
+    });
+
+    window.addEventListener("click", (event) => {
+        if (event.target === modal) {
+            cartModal.style.display = "none";
         }
-    }
+    });
+
     /* End: Cart Modal */
 
     /* Start: Cart */
@@ -27,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td style="text-align:center;">${productName}</td>
                     <td style="text-align:right;">&#2547; ${unitPrice}</td>
                     <td style="text-align:left;">&nbsp;&times; <input type="number" class="input-qty" name="qty"
-                            title="Input Product Quantity" min="0" max="${availableQty}" value="${qty}" data-product-name="${productName}" />
+                            title="Input Product Quantity" min="0" max="${availableQty}" value="${qty}" data-id="${productName}" />
                     </td>
                     <td style="text-align:right;">
                         &#2547; <output class="price">${parseFloat(unitPrice * qty).toFixed(2)}</output>
@@ -78,22 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (event.target === each || each.contains(event.target)) {
                 if (each.dataset.availableQty > 1) {
                     const newData = localStorageCartItems
-                    if (!newData.some(e => e.productName === each.dataset.productName)) {
+                    if (!newData.some(e => e.productName === each.dataset.id)) {
                         newData.push({
                             id: ++currentId,
-                            productName: each.dataset.productName,
+                            productName: each.dataset.id,
                             availableQty: each.dataset.availableQty,
                             qty: 1,
                             unitPrice: parseFloat(each.dataset.unitPrice),
                             imageUrl: each.dataset.imageUrl
                         })
                     } else {
-                        const targetIndex = newData.findIndex(e => e.productName === each.dataset.productName)
+                        const targetIndex = newData.findIndex(e => e.productName === each.dataset.id)
                         if (each.dataset.availableQty > newData[targetIndex].qty) {
                             newData[targetIndex].qty += 1
                         } else {
                             alert('Sorry, this product is out of stock.')
-                            const btnAddToCart = document.querySelector(`#btnAddToCart[data-product-name="${newData[targetIndex].productName}"`)
+                            const btnAddToCart = document.querySelector(`.add-cart-item[data-id="${newData[targetIndex].id}"`)
                             btnAddToCart.classList.add('btn-disabled')
 
                             const btnBuyNow = btnAddToCart.previousElementSibling
@@ -131,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartQtyAll.forEach(each => {
             each.addEventListener('input', (event) => {
                 const newData = localStorageCartItems
-                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.productName)
+                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.id)
                 newData[targetIndex].qty = event.target.value
 
                 setTimeout(() => {
