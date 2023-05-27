@@ -18,13 +18,13 @@
                                 <div class="unit-price">{{ each['unit_price'] }}</div>
                             </div>
                             <div class="btn-group">
-                                <a href="/product-details/{{ each['product_name'] }}" class="btn-outlined"
+                                <a href="/product-details/{{ each['product_name'] }}" class="btn btn-outlined"
                                     title="View Product Details">Details</a>
                                 <a {{ '' if product_not_available else 'href="/checkout"' }}
-                                    class=" btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
+                                    class="btn btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Buy this Product" id="btnBuyNow">Buy Now</a>
                                 <a id="btnAddToCart"
-                                    class="btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
+                                    class="btn btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Add to Cart" data-product-name="{{ each['product_name'] }}"
                                     data-available-qty="{{ each['available_qty'] }}"
                                     data-unit-price="{{ each['unit_price'] }}"

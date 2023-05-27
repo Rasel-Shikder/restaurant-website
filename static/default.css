@@ -208,19 +208,83 @@ a:hover {
 
 /*.......btn part...........*/
 .btn {
-    width: 52px;
+    /* width: 52px;
     font-size: 13px;
     padding: 3px;
     border-radius: 4px;
     background-color: blue;
     color: white;
     border: 1px solid #9595a3;
+    cursor: pointer; */
+    border: 1px solid #ff8383;
+    font-weight: bold;
+    padding: 4px 7px;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #a99a9a;
+    transition: all .7s ease;
 }
+
+/* .btn:hover {
+    background-color: #a99a9a;
+} */
+
+.btn-solid {
+    background-color: #ff8383;
+    color: white;
+}
+
+.btn-solid:hover {
+    background-color: transparent;
+    color: #ff8383;
+}
+
+.btn-outlined {
+    color: #ff8383;
+}
+
+.btn-outlined:hover {
+    background-color: #ff8383;
+    color: white;
+}
+
+.btn-cart {
+    /* background-color: #ff8383;
+    border: 1px solid #ff8383;
+    color: white;
+    text-decoration: none; */
+    padding: 21px;
+    position: fixed;
+    right: 25px;
+    top: 25px;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.btn-checkout {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.btn-checkout:hover {
+    background-color: #fff;
+    color: #ff8383;
+}
+
+.btn-delete-cart {
+    padding: 10px;
+}
+
+a.btn-disabled {
+    cursor: not-allowed;
+}
+
 
 /*btn end*/
 .slider-container {
@@ -264,11 +328,7 @@ a:hover {
 
 }
 
-.same-content {
-    margin-bottom: 70px;
-}
-
-.same-content img {
+article img {
     width: 200px;
     height: 150px;
     float: left;
@@ -278,18 +338,20 @@ a:hover {
     box-shadow: 1px 3px 6px 3px #685454;
 }
 
-.content-group {}
+article {
+    margin-bottom: 70px;
+}
 
-.content-group h3 {
+article h3 {
     color: #010101;
 }
 
-.content-group p {
+article p {
     color: #535151;
     font-size: 16px;
 }
 
-.content-group a {
+article a {
     margin-right: 14px;
     background-color: black;
     color: white;
@@ -300,7 +362,7 @@ a:hover {
     transition: all 0.5s ease;
 }
 
-.content-group a:hover {
+article a:hover {
     background-color: #fad710;
     color: #151010;
 }
@@ -537,32 +599,13 @@ a:hover {
     margin-bottom: 3px;
 }
 
-.product figcaption .btn-group a {
+/* .product figcaption .btn-group a {
     border: 1px solid #ff8383;
     font-weight: bold;
     padding: 4px 7px;
     text-align: center;
     text-decoration: none;
-}
-
-.product figcaption .btn-solid {
-    background-color: #ff8383;
-    color: white;
-}
-
-.product figcaption .btn-solid:hover {
-    background-color: transparent;
-    color: #ff8383;
-}
-
-.product figcaption .btn-outlined {
-    color: #ff8383;
-}
-
-.product figcaption .btn-outlined:hover {
-    background-color: #ff8383;
-    color: white;
-}
+} */
 
 /*product part end*/
 
@@ -597,9 +640,10 @@ a:hover {
 .same-part {
     font-size: 17px;
     color: #ffffff;
+    font-weight: bold;
 }
 
-.submit {
+/* .submit {
     margin-left: 20px;
     background-color: blue;
     color: white;
@@ -614,7 +658,7 @@ a:hover {
     background-color: orange;
     color: black;
     transition: all .7s ease;
-}
+} */
 
 /*contact part end*/
 
@@ -623,23 +667,9 @@ a:hover {
     background-color: #3C3C3C;
 }
 
-/* .btn-cart */
-.btn-cart {
-    background-color: #ff8383;
-    border: 1px solid #ff8383;
-    color: white;
-    text-decoration: none;
-    padding: 21px;
-    position: fixed;
-    right: 25px;
-    top: 25px;
-    display: inline-block;
-    border-radius: 50%;
-}
-
-.btn-cart:hover {
-    background-color: transparent;
-    color: #ff8383;
+.required::after {
+    content: "*";
+    color: red;
 }
 
 .btn-cart .badge {
@@ -683,21 +713,6 @@ a:hover {
     background-color: #ff8383;
     color: white;
     text-align: right;
-}
-
-.cart-modal .modal-footer .btn {
-    background-color: transparent;
-    border: 1px solid #fff;
-    padding: 10px;
-    font-weight: bold;
-    font-size: large;
-}
-
-.cart-modal .modal-footer .btn:hover {
-    background-color: #fff;
-    color: #ff8383;
-    padding: 10px;
-    font-weight: bold;
 }
 
 .cart-modal .modal-header,
@@ -767,8 +782,4 @@ table.cart-items tfoot {
     width: 35px;
     font-size: larger;
     text-align: right;
-}
-
-a.btn-disabled {
-    cursor: not-allowed;
 }

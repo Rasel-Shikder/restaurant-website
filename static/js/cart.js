@@ -10,8 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td style="text-align:left;">&nbsp;&times; <input type="number" id="qty" class="input-qty"
                             title="Input Product Quantity" min="0" max="${availableQty}" value="${qty}" data-product-name="${productName}" />
                     </td>
-                    <td style="text-align:right;padding-right:5px;">
+                    <td style="text-align:right;">
                         &#2547; <output class="price">${parseFloat(unitPrice * qty).toFixed(2)}</output>
+                    </td>
+                    <td style="padding-right:5px;text-align:right;">
+                    <a href="#" class="btn btn-outlined btn-delete-cart"
+                                    title="Delete Cart Item"><i class="fa fa-trash-alt"></i> Delete</a>
                     </td>
                 </tr>`
 
