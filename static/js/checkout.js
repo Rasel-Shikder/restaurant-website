@@ -1,7 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // for checkout page
-    document.querySelector("#btnCart").style.display = "none"
+// for checkout page
+const btnCart = document.querySelector("#btnCart")
+btnCart.innerHTML = ""
+btnCart.style.display = "none"
 
+document.addEventListener('DOMContentLoaded', () => {
     const tempProductListLi = (productName, unitPrice, qty, price) => `<li>
     <strong>${productName}</strong>
     <ul>
