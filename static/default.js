@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td style="text-align:left;"><img src="/static/${imageUrl}" title="${productName}" style="width: 100px;height:100px;"></td>
                     <td style="text-align:center;">${productName}</td>
                     <td style="text-align:right;">&#2547; ${unitPrice}</td>
-                    <td style="text-align:left;">&nbsp;&times; <input type="number" id="qty" class="input-qty"
+                    <td style="text-align:left;">&nbsp;&times; <input type="number" class="input-qty" name="qty"
                             title="Input Product Quantity" min="0" max="${availableQty}" value="${qty}" data-product-name="${productName}" />
                     </td>
                     <td style="text-align:right;">
