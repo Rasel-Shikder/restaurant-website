@@ -1,7 +1,7 @@
 Urgent:
 
 - add delete button to cart
-- add details to application
+- details for each products
 - buy now for each product
 - create invoice on product purchase
 - create an invoice template for email
@@ -9,6 +9,7 @@ Urgent:
 - payment gateway for debit/credit card
 - payment gateway for bkash/nagad
 - hide cart table while no item is available and show an message for empty cart
+- add additional price for Shipping and COD (while checkout)
 
 Others:
 
@@ -18,3 +19,4 @@ Others:
 - modify home page
 - Optional: create a blog page \w some articles
 - search option for all products, pages and blog posts
+- add coupe code while checkout

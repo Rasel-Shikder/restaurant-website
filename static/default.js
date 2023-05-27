@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentId = 0;
 
+    // Add a Cart Item
     document.querySelectorAll(".add-cart-item").forEach(each => {
         each.addEventListener('click', (event) => {
             if (event.target === each || each.contains(event.target)) {
