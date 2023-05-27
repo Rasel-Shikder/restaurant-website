@@ -6,7 +6,7 @@
         <div class="content-section clear">
             <div class="product-part">
                 <h2>Our Available Products</h2>
-                <article class="product">
+                <section class="product">
                     {% for each in products: %}
                     {% set product_not_available = each['available_qty'] < 1 %} <figure
                         title="{{ each['product_name'] }}">
@@ -23,8 +23,7 @@
                                 <a {{ '' if product_not_available else 'href="/checkout"' }}
                                     class="btn btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Buy this Product" id="btnBuyNow">Buy Now</a>
-                                <a id="btnAddToCart"
-                                    class="btn btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
+                                <a class="btn btn-solid add-to-cart {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Add to Cart" data-product-name="{{ each['product_name'] }}"
                                     data-available-qty="{{ each['available_qty'] }}"
                                     data-unit-price="{{ each['unit_price'] }}"
@@ -34,7 +33,7 @@
                         </figcaption>
                         </figure>
                         {% endfor %}
-                </article>
+                        </article>
             </div>
         </div>
         {% include 'sidebar.html' %}

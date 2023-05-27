@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentId = 0;
 
-    document.querySelectorAll("#btnAddToCart").forEach(each => {
+    document.querySelectorAll(".add-to-cart").forEach(each => {
         each.addEventListener('click', (event) => {
             if (event.target === each || each.contains(event.target)) {
                 if (each.dataset.availableQty > 1) {
