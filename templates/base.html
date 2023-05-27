@@ -111,9 +111,7 @@
                                 <th style="text-align:right;padding-right: 10px;"></th>
                             </tr>
                         </thead>
-                        <tbody>
-
-                        </tbody>
+                        <tbody></tbody>
                         <tfoot>
                             <tr>
                                 <td></td>
@@ -149,6 +147,7 @@
     <script src={{ url_for('static', filename="js/scroll_to_top.js" ) }}></script>
     {% block externalScripts %}{% endblock %}
     <script src={{ url_for('static', filename="default.js" ) }}></script>
+    {% block externalScriptsAfter %}{% endblock %}
 </body>
 
 </html>

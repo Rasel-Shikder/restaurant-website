@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener("click", (event) => {
-        if (event.target === modal) {
+        if (event.target === cartModal) {
             cartModal.style.display = "none";
         }
     });
