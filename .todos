@@ -1,7 +1,7 @@
 Urgent:
 
 - add delete button to cart
-- details for each products
+- complete details page
 - buy now for each product
 - create invoice on product purchase
 - create an invoice template for email
@@ -20,3 +20,4 @@ Others:
 - Optional: create a blog page \w some articles
 - search option for all products, pages and blog posts
 - add coupe code while checkout
+- pagination for product details page

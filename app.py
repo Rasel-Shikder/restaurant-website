@@ -15,8 +15,8 @@ def about():
 def products():
     products = []
     
-    db_cursor.execute("SELECT * FROM products")
-
+    db_cursor.execute("SELECT id, product_name, available_qty, unit_price, image_url, details FROM products")
+    
     products_from_db = db_cursor.fetchall()
 
     for each_product in products_from_db:
@@ -30,6 +30,24 @@ def products():
     })
 
     return render_template("products.html", products=products)
+
+@app.route('/products/<name>')
+def product(name):
+    name_for_sql = name.replace('-', ' ')
+    db_cursor.execute(f"SELECT id, product_name, available_qty, unit_price, image_url, details FROM products WHERE LCASE(product_name) = '{name_for_sql.lower()}'")
+
+    product_from_db = db_cursor.fetchall()
+
+    product = {
+        "id": product_from_db[0][0],
+        "product_name": product_from_db[0][1],
+        "available_qty": product_from_db[0][2],
+        "unit_price": product_from_db[0][3],
+        "image_url": product_from_db[0][4],
+        "details": product_from_db[0][5]
+    }
+
+    return render_template("product-details.html", product=product)
 
 @app.route('/contact')
 def contact():

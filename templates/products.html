@@ -18,8 +18,8 @@
                                 <div class="unit-price">{{ each['unit_price'] }}</div>
                             </div>
                             <div class="btn-group">
-                                <a href="/product-details/{{ each['product_name'] }}" class="btn btn-outlined"
-                                    title="View Product Details">Details</a>
+                                <a href="/products/{{ each['product_name'].replace(' ', '-').lower() }}"
+                                    class="btn btn-outlined" title="View Product Details">Details</a>
                                 <a {{ '' if product_not_available else 'href="/checkout"' }}
                                     class="btn btn-solid buy-now {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Buy this Product">Buy Now</a>

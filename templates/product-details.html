@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<!-- <p>{{ product.id }}</p>
+<p>{{ product.available_qty }}</p>
+<p>{{ product.unit_price }}</p> -->
+<!-- content part start -->
+<div class="full-wrapper content-bg clear">
+    <div class="wrapper clear">
+        <div class="content-section clear" style="width:100% !important;">
+            <div class="content-left clear" style="width:70%; margin-left:160px;">
+                <h2>Product: {{ product.product_name }}</h2>
+                <div class="same-content">
+                    <img src="{{ url_for('static', filename=product.image_url )}}" style="width:90%; height:auto;"
+                        title="{{ product.product_name }}">
+                    <article>
+                        <p style="margin-top:20px;margin-bottom:20px;">{{ product.details }}</p>
+                    </article>
+                    <!-- <div class="pagination">
+                        <ul>
+                            <li><a href="#">Pre</a></li>
+                            <li><a href="blog-post.html">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">....</a></li>
+                            <li><a href="#">97</a></li>
+                            <li><a href="#">98</a></li>
+                            <li><a href="#">99</a></li>
+                            <li><a href="#">next</a></li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content part end -->
+</div>
+{% endblock %}
