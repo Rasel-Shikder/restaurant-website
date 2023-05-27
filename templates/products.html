@@ -23,7 +23,7 @@
                                 <a {{ '' if product_not_available else 'href="/checkout"' }}
                                     class="btn btn-solid {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Buy this Product" id="btnBuyNow">Buy Now</a>
-                                <a class="btn btn-solid add-to-cart {{ 'btn-disabled' if product_not_available else '' }}"
+                                <a class="btn btn-solid add-cart-item {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Add to Cart" data-product-name="{{ each['product_name'] }}"
                                     data-available-qty="{{ each['available_qty'] }}"
                                     data-unit-price="{{ each['unit_price'] }}"
