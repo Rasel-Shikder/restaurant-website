@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     /* End: Cart Modal */
 
     /* Start: Cart */
-    const updateCart = () => {
-        const localStorageData = JSON.parse(localStorage.getItem('cartItems'))
+    localStorage.setItem('cartItems', '[]')
+    const localStorageCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
+    const updateCart = () => {
         const tempCartItem = (id, imageUrl, productName, unitPrice, availableQty, qty) => `<tr>
                     <td style="text-align:right;padding-right:10px;">${id}</td>
                     <td style="text-align:left;"><img src="/static/${imageUrl}" title="${productName}" style="width: 100px;height:100px;"></td>
@@ -38,11 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </td>
                 </tr>`
 
-        if (localStorageData !== null) {
+        if (localStorageCartItems.length > 0) {
             const cartItems = document.querySelector("#cartItems tbody")
             cartItems.innerHTML = ''
 
-            localStorageData.forEach(each => {
+            localStorageCartItems.forEach(each => {
                 cartItems.innerHTML += tempCartItem(each.id, each.imageUrl, each.productName, each.unitPrice, each.availableQty, each.qty)
             })
         }
@@ -62,11 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Updating cart item count
-        document.querySelectorAll('.count-cart-items').forEach(each => each.innerText = localStorageData ? localStorageData.length : "0")
+        document.querySelectorAll('.count-cart-items').forEach(each => each.innerText = localStorageCartItems.length)
     }
     updateCart()
 
-    const localStorageCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     let currentId = 0;
 
