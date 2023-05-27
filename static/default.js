@@ -115,6 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    // Delete a Cart Item
+    document.querySelectorAll(".delete-cart-item").forEach(each => {
+        each.addEventListener('click', (event) => {
+            if (event.target === each || each.contains(event.target)) {
+                // const newData = localStorageCartItems.filter(e => e.id !== each.dataset.id)
+                // localStorage.setItem('cartItems', JSON.stringify(newData))
+                // updateCart()
+            }
+        })
+    })
+
     setInterval(() => {
         const cartQtyAll = document.querySelectorAll("#cartItems .input-qty")
         cartQtyAll.forEach(each => {
