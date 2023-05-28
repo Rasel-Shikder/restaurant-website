@@ -141,6 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     })
 
+    // Alert while product is not available
+    document.querySelectorAll(".btn-disabled").forEach(each => {
+        each.addEventListener('click', () => {
+            alert('Sorry, this product is out of stock.')
+        })
+    })
+
     setInterval(() => {
         const cartQtyAll = document.querySelectorAll("#cartItems .input-qty")
         cartQtyAll.forEach(each => {

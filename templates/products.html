@@ -20,7 +20,7 @@
                             <div class="btn-group">
                                 <a href="/products/{{ each['product_name'].replace(' ', '-').lower() }}"
                                     class="btn btn-outlined" title="View Product Details">Details</a>
-                                <a href="/buy-now/{{ each['product_name'].replace(' ', '-').lower() }}"
+                                <a href="{{ '#' if product_not_available else '/buy-now/' + each['product_name'].replace(' ', '-').lower() }}"
                                     class="btn btn-solid buy-now {{ 'btn-disabled' if product_not_available else '' }}"
                                     title="Buy this Product">Buy Now</a>
                                 <a class="btn btn-solid add-cart-item {{ 'btn-disabled' if product_not_available else '' }}"
