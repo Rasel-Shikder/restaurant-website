@@ -197,6 +197,13 @@ a:hover {
     border: none;
     /* width: 235px; */
     /* font-size: 22px; */
+    width: 175px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+.menu-section form.search input.search:focus {
+    width: 255px;
 }
 
 .menu-section span {
