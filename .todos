@@ -1,7 +1,6 @@
 Urgent:
   - add delete button to cart
   - complete details page
-  - create an order summary (done!)
   - create an invoice template for email
   - send invoice (\w pdf) to customer email
   - payment gateway for debit/credit card
