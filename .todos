@@ -1,7 +1,6 @@
 Urgent:
   - add delete button to cart
   - complete details page
-  - buy now for each product
   - create invoice on product purchase
   - create an invoice template for email
   - send invoice (\w pdf) to customer email

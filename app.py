@@ -65,7 +65,7 @@ def buy_now(name):
         "details": product_from_db[0][5]
     }
 
-    return render_template("buy-now.html", product_id = product['id'], product_name = product['product_name'])
+    return render_template("checkout.html", product=product, emptyExistingOrderSummary = True)
 
 @app.route('/checkout')
 def checkout():
