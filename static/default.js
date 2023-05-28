@@ -17,13 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
             cartModal.style.display = "none";
         }
     });
-
     /* End: Cart Modal */
 
     /* Start: Cart */
     const localStorageCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
     const updateCart = () => {
+        const cartModalBody = document.querySelector("#cartModal .modal-body")
+        cartModalBody.innerHTML = '<table id="cartItems" class="cart-items"> <thead> <tr> <th style="text-align:right;padding-right:10px;">#</th> <th style="text-align:left;"></th> <th style="text-align:center;">Product Name</th> <th style="text-align:right;">Unit Price</th> <th style="text-align:left;">Qty.</th> <th style="text-align:right;">Price</th> <th style="text-align:right;padding-right: 10px;"></th> </tr></thead> <tbody></tbody> <tfoot> <tr> <td></td><td></td><td></td><td></td><td></td><td></td><th style="text-align: right;">&#2547; <output id="total">0</output></th> </tr></tfoot> </table>'
+
         const tempCartItem = (id, imageUrl, productName, unitPrice, availableQty, qty) => `<tr>
                     <td style="text-align:right;padding-right:10px;">${id}</td>
                     <td style="text-align:left;"><img src="/static/${imageUrl}" title="${productName}" style="width: 100px;height:100px;"></td>
@@ -66,21 +68,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Updating cart item count
         document.querySelectorAll('.count-cart-items').forEach(each => each.innerText = localStorageCartItems.length)
     }
-    updateCart()
 
-    let currentId = 0
+    // Show empty cart message or updateCart()
+    if (localStorageCartItems.length === 0) {
+        const targetElement = document.querySelector("#cartModal .modal-body")
+        targetElement.innerHTML = ''
+        targetElement.innerHTML = '<p style="font-weight: bold; font-size: large;">Cart is empty.</p>'
+    } else {
+        updateCart()
+    }
+
+    let currentId;
 
     // if cart is not empty, get and set last id
     if (localStorageCartItems.length > 0) {
         currentId = localStorageCartItems[localStorageCartItems.length - 1].id;
+    } else {
+        currentId = 0;
     }
 
     // Add a Cart Item
     document.querySelectorAll(".add-cart-item").forEach(each => {
         each.addEventListener('click', (event) => {
-            const cartModalBody = document.querySelector("#cartModal .modal-body")
-            cartModalBody.innerHTML = '<table id="cartItems" class="cart-items"> <thead> <tr> <th style="text-align:right;padding-right:10px;">#</th> <th style="text-align:left;"></th> <th style="text-align:center;">Product Name</th> <th style="text-align:right;">Unit Price</th> <th style="text-align:left;">Qty.</th> <th style="text-align:right;">Price</th> <th style="text-align:right;padding-right: 10px;"></th> </tr></thead> <tbody></tbody> <tfoot> <tr> <td></td><td></td><td></td><td></td><td></td><td></td><th style="text-align: right;">&#2547; <output id="total">0</output></th> </tr></tfoot> </table>'
-
             if (event.target === each || each.contains(event.target)) {
                 if (each.dataset.availableQty > 1) {
                     const newData = localStorageCartItems
@@ -106,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (btnBuyNow.classList.contains('buy-now')) {
                                 btnBuyNow.classList.add('btn-disabled')
                             } else {
-                                console.error("previousElementSibling of #btnAddToCart is not #btnBuyNow. Check HTML code.")
+                                console.error("previousElementSibling of .add-cart-item is not .buy-now. Check HTML code.")
                             }
                         }
                     }
@@ -151,11 +160,4 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }, 100);
     /* End: Cart */
-
-    // If cart is empty
-    if (localStorageCartItems.length === 0) {
-        const targetElement = document.querySelector("#cartModal .modal-body")
-        targetElement.innerHTML = ''
-        targetElement.innerHTML = '<p style="font-weight: bold; font-size: large;">Cart is empty.</p>'
-    }
 })

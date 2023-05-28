@@ -15,8 +15,9 @@
 					<form class="frm-checkout" id="frmCheckout">
 						<h3>Billing Address</h3>
 						<input type="text" id="name" name="name" placeholder="Name *" required>
-						<input type="text" id="email" name="email" placeholder="Email Address *" required>
-						<input type="text" id="billingAddress" name="billingAddress" placeholder="Billing Address *">
+						<input type="text" id="email" name="email" placeholder="Email Address">
+						<input type="text" id="billingAddress" name="billingAddress" placeholder="Billing Address *"
+							required>
 						<input type="text" id="phoneNumber" name="phoneNumber" placeholder="Phone Number *">
 						<textarea name="additional" id="additional" cols="30" rows="10"></textarea>
 
@@ -32,7 +33,8 @@
 
 							<!-- Card Part -->
 							<div class="card-part">
-								<div class="icon-container">
+								<div class="card-icon-container">
+									<span>Accepted Cards: </span>
 									<i class="fab fa-brands fa-cc-visa" style="color:navy;"></i>
 									<i class="fab fa-cc-amex" style="color:blue;"></i>
 									<i class="fab fa-cc-mastercard" style="color:red;"></i>
@@ -93,9 +95,7 @@
 				<ul class="product-list" id="productList">
 				</ul>
 				<p style="text-align: right; font-weight: bold;">Sub Total: &#2547; <output id="subTotal">0</output></p>
-				<p style="text-align: right; font-weight: bold;">VAT (+): &#2547; <output id="vatPrice">0</output></p>
-				<p style="text-align: right; font-weight: bold;">Shipping Charge (+): &#2547; <output
-						id="subTotal">0</output></p>
+				<p style="text-align: right; font-weight: bold;">Delivery Charge (+): &#2547; <span>30</span></p>
 				<p style="text-align: right; font-weight: bold;">Discount (-): &#2547; <output
 						id="discountPrice">0</output>
 				</p>
@@ -118,9 +118,7 @@
 			orderSummary.innerHTML = `<ul class="product-list" id="productList">
 				</ul>
 				<p style="text-align: right; font-weight: bold;">Sub Total: &#2547; <output id="subTotal">0</output></p>
-				<p style="text-align: right; font-weight: bold;">VAT (+): &#2547; <output id="vatPrice">0</output></p>
-				<p style="text-align: right; font-weight: bold;">Shipping Charge (+): &#2547; <output
-						id="subTotal">0</output></p>
+				<p style="text-align: right; font-weight: bold;">Delivery Charge (+): &#2547; <span>30</span></p>
 				<p style="text-align: right; font-weight: bold;">Discount (-): &#2547; <output
 						id="discountPrice">0</output>
 				</p>
@@ -134,7 +132,7 @@
 		const tempProductListLi = (productName, unitPrice, qty, price) => `<li>
 		    <strong>${productName}</strong>
 		    <ul>
-		        <li>Unit Price: ${unitPrice} &times; ${qty}
+		        <li>Unit Price:  &#2547; ${unitPrice} &times; ${qty}
 		        </li>
 		        <li>Price: &#2547; ${price}</li>
 		    </ul>
@@ -143,6 +141,13 @@
 		setTimeout(() => {
 			const productList = document.getElementById("productList")
 			productList.innerHTML = tempProductListLi("{{ product['product_name'] }}", "{{ product['unit_price'] }}", "1", "{{ product['unit_price'] * 1 }}")
+
+			const subTotal = document.querySelector("#subTotal")
+			const discountPrice = document.getElementById('discountPrice')
+			const totalToCheckout = document.getElementById('totalToCheckout')
+
+			subTotal.innerHTML = parseFloat("{{ product['unit_price'] * 1 }}").toFixed(2)
+			totalToCheckout.innerText = parseFloat(Number(subTotal.innerText) + 30 - Number(discountPrice.innerText)).toFixed(2)
 		});
 
 		{% endif %}

@@ -783,3 +783,7 @@ table.cart-items tfoot {
     font-size: larger;
     text-align: right;
 }
+
+.sidebar-content .product-list li ul li {
+    border-bottom: none;
+}

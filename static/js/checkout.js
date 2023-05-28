@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tempProductListLi = (productName, unitPrice, qty, price) => `<li>
             <strong>${productName}</strong>
             <ul>
-                <li>Unit Price: ${unitPrice} &times; ${qty}
+                <li>Unit Price: &#2547; ${unitPrice} &times; ${qty}
                 </li>
                 <li>Price: &#2547; ${price}</li>
             </ul>
@@ -18,14 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const col1 = each.productName
         const col2 = each.unitPrice
         const col3 = each.qty
-        const col4 = each.unitPrice * each.qty
+        const col4 = parseFloat(each.unitPrice * each.qty).toFixed(2)
         totalPrice += col4
 
         productList.innerHTML += tempProductListLi(col1, col2, col3, col4)
     })
 
+    // Update order subtotal and totalToCheckout
     const subTotal = document.querySelector("#subTotal")
+    const discountPrice = document.getElementById('discountPrice')
+    const totalToCheckout = document.getElementById('totalToCheckout')
+
     subTotal.innerHTML = parseFloat(totalPrice).toFixed(2)
+    totalToCheckout.innerText = parseFloat(Number(subTotal.innerText) + 30 - Number(discountPrice.innerText)).toFixed(2)
 
     function disableMobileBanking(isTrue) {
         const elems = document.querySelectorAll('#mobileBankingInfo select, #mobileBankingInfo input');
