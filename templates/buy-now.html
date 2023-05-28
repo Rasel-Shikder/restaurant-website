@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block externalHeadIncludes %}
+<style>
+    @keyframes redirectAnimation {
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .redirect-dots {
+        animation: redirectAnimation 1s infinite;
+    }
+
+    .redirect-text {
+        font-size: larger;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+{% block main %}
+<!-- content part start -->
+<div class="full-wrapper content-bg clear">
+    <div class="wrapper clear">
+        <div class="content-section clear" style="width:100% !important;">
+            <div class="content-left clear" style="width:70%; margin-left:160px;">
+                <h2>Buy Now: {{ product_name }}</h2>
+                <div class="same-content">
+                    <p class="redirect-text">Redirecting<span class="redirect-dots">...</span></p>
+
+                    <script>
+                        // Redirect the user after a certain time
+                        const redirectTime = 3000; // Time in milliseconds
+                        setTimeout(() => {
+                            window.location.href = "/checkout"; // Replace with your desired URL
+                        }, redirectTime);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content part end -->
+</div>
+{% endblock %}

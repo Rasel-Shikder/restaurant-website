@@ -81,22 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
             if (event.target === each || each.contains(event.target)) {
                 if (each.dataset.availableQty > 1) {
                     const newData = localStorageCartItems
-                    if (!newData.some(e => e.productName === each.dataset.id)) {
+                    if (!newData.some(e => e.productName === each.dataset.productName)) {
                         newData.push({
                             id: ++currentId,
-                            productName: each.dataset.id,
+                            productName: each.dataset.productName,
                             availableQty: each.dataset.availableQty,
                             qty: 1,
                             unitPrice: parseFloat(each.dataset.unitPrice),
                             imageUrl: each.dataset.imageUrl
                         })
                     } else {
-                        const targetIndex = newData.findIndex(e => e.productName === each.dataset.id)
+                        const targetIndex = newData.findIndex(e => e.productName === each.dataset.productName)
                         if (each.dataset.availableQty > newData[targetIndex].qty) {
                             newData[targetIndex].qty += 1
                         } else {
                             alert('Sorry, this product is out of stock.')
-                            const btnAddToCart = document.querySelector(`.add-cart-item[data-id="${newData[targetIndex].id}"`)
+                            const btnAddToCart = document.querySelector(`.add-cart-item[data-product-name="${newData[targetIndex].productName}"`)
                             btnAddToCart.classList.add('btn-disabled')
 
                             const btnBuyNow = btnAddToCart.previousElementSibling

@@ -68,3 +68,28 @@
 .payment-part {
     padding: 20px;
 }
+
+/* Product List */
+.product-list {
+    list-style: none;
+    padding: 0;
+}
+
+.product-list li {
+    margin-bottom: 10px;
+}
+
+.product-list li strong {
+    font-weight: bold;
+}
+
+.product-list li ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.product-list li ul li {
+    margin-bottom: 5px;
+}
