@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add a Cart Item
     document.querySelectorAll(".add-cart-item").forEach(each => {
         each.addEventListener('click', (event) => {
+            const cartModalBody = document.querySelector("#cartModal .modal-body")
+            cartModalBody.innerHTML = '<table id="cartItems" class="cart-items"> <thead> <tr> <th style="text-align:right;padding-right:10px;">#</th> <th style="text-align:left;"></th> <th style="text-align:center;">Product Name</th> <th style="text-align:right;">Unit Price</th> <th style="text-align:left;">Qty.</th> <th style="text-align:right;">Price</th> <th style="text-align:right;padding-right: 10px;"></th> </tr></thead> <tbody></tbody> <tfoot> <tr> <td></td><td></td><td></td><td></td><td></td><td></td><th style="text-align: right;">&#2547; <output id="total">0</output></th> </tr></tfoot> </table>'
+
             if (event.target === each || each.contains(event.target)) {
                 if (each.dataset.availableQty > 1) {
                     const newData = localStorageCartItems
