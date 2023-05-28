@@ -148,4 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }, 100);
     /* End: Cart */
+
+    // If cart is empty
+    if (localStorageCartItems.length === 0) {
+        const targetElement = document.querySelector("#cartModal .modal-body")
+        targetElement.innerHTML = ''
+        targetElement.innerHTML = '<p style="font-weight: bold; font-size: large;">Cart is empty.</p>'
+    }
 })
