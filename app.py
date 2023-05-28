@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from db_config import db_cursor   
 
 app = Flask(__name__)
@@ -82,6 +82,12 @@ def failed():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/search')
+def search():
+    if request.method == 'GET':
+        search_query = request.args.get('q')
+    return render_template('search_result.html', searchTerm=search_query)
 
 if __name__ == '__main__':
     app.run(debug=True)
