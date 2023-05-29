@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (cus_email) {
                 const random_invoice_id = Math.floor(Math.random() * 100000) + 1000
                 window.location.assign(`/sendMail?from=mahfuz225bd@gmail.com&to=${cus_email}&subject=You%20payment%20is%20successful&message=Invoice%23${random_invoice_id}%20-%20Total%20Price%3A%20BDT%20${amount}`)
+                if (window.location.pathname === '/checkout') {
+                    localStorage.setItem('cartItems', [])
+                }
             }
 
             if (xhr.readyState === 4 && xhr.status === 200) {

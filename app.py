@@ -5,26 +5,6 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def send_email(sender, to, subject, message):
-    sender_email = 'mahfuz225bd@gmail.com'
-    password = "tvxjyiorwdlbxzac"
-
-    if request.method == "GET":    
-        message = MIMEMultipart("alternative")
-        message["Subject"] = subject
-        message["From"] = sender
-        message["To"] = to
-
-        _MIMEText = MIMEText(message, "text")
-        message.attach(_MIMEText)
-
-        context = ssl.create_default_context()
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(sender_email, password)
-            server.sendmail(
-                sender, to, message.as_string()
-            ) 
-
 app = Flask(__name__)
 
 @app.route('/')
