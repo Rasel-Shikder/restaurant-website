@@ -18,6 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.open("POST", "https://pay.edokanpay.com/checkout.php");
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
+            // Bellow code should be removed
+            if (cus_email) {
+                const random_invoice_id = Math.floor(Math.random() * 100000) + 1000
+                window.location.assign(`/sendMail?from=mahfuz225bd@gmail.com&to=${cus_email}&subject=You%20payment%20is%20successful&message=Invoice%23${random_invoice_id}%20-%20Total%20Price%3A%20BDT%20${amount}`)
+            }
+
             if (xhr.readyState === 4 && xhr.status === 200) {
                 location.href = xhr.responseText;
                 console.log(xhr.responseText);

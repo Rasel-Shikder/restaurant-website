@@ -5,6 +5,26 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+def send_email(sender, to, subject, message):
+    sender_email = 'mahfuz225bd@gmail.com'
+    password = "tvxjyiorwdlbxzac"
+
+    if request.method == "GET":    
+        message = MIMEMultipart("alternative")
+        message["Subject"] = subject
+        message["From"] = sender
+        message["To"] = to
+
+        _MIMEText = MIMEText(message, "text")
+        message.attach(_MIMEText)
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+            server.login(sender_email, password)
+            server.sendmail(
+                sender, to, message.as_string()
+            ) 
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -89,7 +109,7 @@ def contact():
 
 @app.route('/contact/send')
 def send_contact():    
-    sender_email = "mahfuz225bd@gmail.com"
+    login_email = "mahfuz225bd@gmail.com"
     password = "tvxjyiorwdlbxzac"
 
     if request.method == "GET":
@@ -111,11 +131,40 @@ def send_contact():
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(sender_email, password)
+            server.login(login_email, password)
             server.sendmail(
-                sender_email, email, message.as_string()
+                login_email, email, message.as_string()
             )        
-            return '<script>alert("Message has been sent");window.location.assign("/contact");</script>'
+    return '<script>alert("Message has been sent");window.location.assign("/contact");</script>'
+
+@app.route('/sendMail')
+def send_email():
+    login_email = "mahfuz225bd@gmail.com"
+    password = "tvxjyiorwdlbxzac"
+
+    if request.method == "GET":
+        sender = request.args.get('from')
+        email = request.args.get('to')
+        subject = request.args.get('subject')
+        text_message = request.args.get('message')
+    
+        message = MIMEMultipart("alternative")
+        message["Subject"] = subject
+        message["From"] = sender
+        message["To"] = email
+
+        body = text_message
+
+        _MIMEText = MIMEText(body, "html")
+        message.attach(_MIMEText)
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+            server.login(login_email, password)
+            server.sendmail(
+                sender, email, message.as_string()
+            )        
+    return '<script>alert("An email has been sent please check your email.");window.location.assign("/");</script>'
 
 @app.route('/search')
 def search():
