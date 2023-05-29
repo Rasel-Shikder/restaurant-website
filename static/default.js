@@ -32,13 +32,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td style="text-align:center;">${productName}</td>
                     <td style="text-align:right;">&#2547; ${unitPrice}</td>
                     <td style="text-align:left;">&nbsp;&times; <input type="number" class="input-qty" name="qty"
-                            title="Input Product Quantity" min="0" max="${availableQty}" value="${qty}" data-id="${productName}" />
+                            title="Input Product Quantity" min="0" max="${availableQty}" value="${qty}" data-product-name="${productName}" />
                     </td>
                     <td style="text-align:right;">
                         &#2547; <output class="price">${parseFloat(unitPrice * qty).toFixed(2)}</output>
                     </td>
                     <td style="padding-right:5px;text-align:right;">
-                    <a href="#" class="btn btn-outlined delete-cart-item" title="Delete Cart Item" data-id="${id}"><i class="fa fa-trash-alt"></i> Delete</a>
+                    <a href="#" class="btn btn-outlined delete-cart-item" title="Delete Cart Item" data-product-name="${productName}"><i class="fa fa-trash-alt"></i> Delete</a>
                     </td>
                 </tr>`
 
@@ -134,9 +134,16 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll(".delete-cart-item").forEach(each => {
         each.addEventListener('click', (event) => {
             if (event.target === each || each.contains(event.target)) {
-                // const newData = localStorageCartItems.filter(e => e.id !== each.dataset.id)
-                // localStorage.setItem('cartItems', JSON.stringify(newData))
-                // updateCart()
+                const newData = localStorageCartItems
+                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.productName)
+
+                setTimeout(() => {
+                    localStorage.setItem('cartItems', JSON.stringify(newData))
+
+                    setTimeout(() => {
+                        updateCart()
+                    })
+                })
             }
         })
     })
@@ -153,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartQtyAll.forEach(each => {
             each.addEventListener('input', (event) => {
                 const newData = localStorageCartItems
-                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.id)
+                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.productName)
                 newData[targetIndex].qty = event.target.value
 
                 setTimeout(() => {
