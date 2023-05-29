@@ -8,27 +8,31 @@
 			<di class="contact-part">
 				<h2>Contact Me</h2>
 				<div class="contact_form">
-					<form>
+					<form action="contact/send" method="get">
 						<table>
 							<tr>
 								<td class="same-part">Name <span class="required"></span></td>
-								<td><input type="text" placeholder="Enter your name" class="same-input" required></td>
+								<td><input type="text" placeholder="Enter your name" class="same-input" name="name"
+										required></td>
 							</tr>
 							<tr>
 								<td class="same-part">Phone Number</td>
-								<td><input type="text" placeholder="Enter your phone number" class="same-input"></td>
+								<td><input type="text" placeholder="Enter your phone number" name="phoneNumber"
+										class="same-input"></td>
 							</tr>
 							<tr>
 								<td class="same-part">Email <span class="required"></span></td>
-								<td><input type="email" placeholder="Enter your email" class="same-input" required></td>
+								<td><input type="email" placeholder="Enter your email" class="same-input" name="email"
+										required></td>
 							</tr>
 							<tr>
 								<td class="same-part">Subject</td>
-								<td><input type="text" placeholder="Message subject" class="same-input"></td>
+								<td><input type="text" placeholder="Message subject" name="subject" class="same-input">
+								</td>
 							</tr>
 							<tr>
 								<td class="same-part">Message <span class="required"></span></td>
-								<td><textarea rows="5" cols="25" class="same-input" style="height: 74px;"
+								<td><textarea rows="5" cols="25" class="same-input" name="message" style="height: 74px;"
 										required></textarea></td>
 							</tr>
 							<tr>

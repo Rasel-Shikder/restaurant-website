@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const cus_email = document.getElementById("email").value;
         const amount = document.getElementById("totalToCheckout").innerText;
 
-        const apikey = '646c6ba60e397'; // Your Api Key
-        const clientkey = '646c6ba613d49'; // Your Client Key
-        const secretkey = '84992251'; // Your Secret Key
+        const apikey = '6473c0464a64c'; // Your Api Key
+        const clientkey = '6473c0464a663'; // Your Client Key
+        const secretkey = '1850881815'; // Your Secret Key
 
         const success_url = '/success';
         const cancel_url = '/failed';
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 location.href = xhr.responseText;
+                console.log(xhr.responseText);
             }
         };
         const data = "api=" + encodeURIComponent(apikey) +
