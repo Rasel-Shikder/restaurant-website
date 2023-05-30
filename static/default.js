@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         &#2547; <output class="price">${parseFloat(unitPrice * qty).toFixed(2)}</output>
                     </td>
                     <td style="padding-right:5px;text-align:right;">
-                    <a href="#" class="btn btn-outlined delete-cart-item" title="Delete Cart Item" data-product-name="${productName}"><i class="fa fa-trash-alt"></i> Delete</a>
+                    <a href="/products" class="btn btn-outlined delete-cart-item" title="Delete Cart Item" data-product-name="${productName}"><i class="fa fa-trash-alt"></i> Delete</a>
                     </td>
                 </tr>`
 
@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 setTimeout(() => {
                     updateCart()
-                    location.reload()
                 });
             }
         })
