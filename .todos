@@ -3,7 +3,6 @@ Urgent:
   - complete details page
   - payment gateway for debit/credit card
   - payment gateway for bkash/nagad
-  - add additional price for Shipping and COD (while checkout)
   - create an invoice template for email
   - testing contact page with different email
   - complete send invoice (\w pdf) to customer email after testing contact page with different email
