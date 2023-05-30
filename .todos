@@ -1,5 +1,5 @@
 Urgent:
-  - complete delete cart item button
+  - delete cart item without refreshing page
   - complete details page
   - payment gateway for debit/credit card
   - payment gateway for bkash/nagad

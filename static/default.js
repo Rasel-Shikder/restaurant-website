@@ -133,17 +133,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Delete a Cart Item
     document.querySelectorAll(".delete-cart-item").forEach(each => {
         each.addEventListener('click', (event) => {
+            const cartItems = localStorageCartItems
             if (event.target === each || each.contains(event.target)) {
-                const newData = localStorageCartItems
-                const targetIndex = newData.findIndex(e => e.productName === event.target.dataset.productName)
+                const newData = cartItems.filter(e => e.productName !== each.dataset.productName)
+
+                localStorage.setItem('cartItems', JSON.stringify(newData))
 
                 setTimeout(() => {
-                    localStorage.setItem('cartItems', JSON.stringify(newData))
-
-                    setTimeout(() => {
-                        updateCart()
-                    })
-                })
+                    updateCart()
+                    location.reload()
+                });
             }
         })
     })
