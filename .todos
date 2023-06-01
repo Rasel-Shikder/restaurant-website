@@ -1,20 +1,54 @@
 Urgent:
   - delete cart item without refreshing page
-  - complete details page
   - payment gateway for debit/credit card
   - payment gateway for bkash/nagad
   - create an invoice template for email
-  - testing contact page with different email
-  - complete send invoice (\w pdf) to customer email after testing contact page with different email
+  - testing contact form with different email
+  - complete send invoice (\w pdf) to customer email after testing contact form with different email
 
 Others:
   - modify about page
+    - a feature image (inner texts can be included)
+    - our story
+    - our values
+    - payment methods
+    - who developed this website
+  - sub pages of about
+    - our factory page
+    - our machine page
+    - our staff page
+    - our field page
+    - our web developers page
   - modify sidebar
   - modify home page
+    - todays best deal section
+    - table reservation
+    - counter section
+    - customer reviews section
+    - contact section
+
   - Optional: create a blog page \w some articles
+  - Optional: Push Notification System
+  - Optional: add google map
   - search option for all products, pages and blog posts
   - add coupe code while checkout
   - pagination for product details page
-  - clear cart button
+  - clear all cart items button
   - search autocomplete
-  - product filter options at sidebar
+  - product search/filter options at sidebar
+    - product search with autocomplete
+    - filter product category
+    - filter price range
+  - complete product details page
+    - add to cart
+    - if added to cart, spin quantity
+    - product image preview
+    - buy now
+    - customer reviews
+    - questions about product
+    - add product to wishlist
+    - related products
+  - add google map to contact page
+  - live chat
+  - page: privacy policy
+  - page: terms of services
