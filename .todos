@@ -2,7 +2,7 @@ Urgent:
   - delete cart item without refreshing page
   - payment gateway for debit/credit card
   - payment gateway for bkash/nagad
-  - create an invoice template for email
+  - testing invoice template generation + testing to send as email attachment
   - testing contact form with different email
   - complete send invoice (\w pdf) to customer email after testing contact form with different email
 
