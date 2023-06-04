@@ -7,7 +7,7 @@ Urgent:
   - complete send invoice (\w pdf) to customer email after testing contact form with different email
 
 Others:
-  - modify about page
+  - for about page
     - a feature image (inner texts can be included)
     - our story
     - our values
@@ -19,8 +19,7 @@ Others:
     - our staff page
     - our field page
     - our web developers page
-  - modify sidebar
-  - modify home page
+  - for home page
     - todays best deal section
     - table reservation
     - counter section
@@ -50,5 +49,16 @@ Others:
     - related products
   - add google map to contact page
   - live chat
+
+- Redesign the website (frontend):
+  - homepage
+  - about page, no sidebar
+  - contact page, no sidebar
+  - product page, with product sidebar
+  - product details page, no sidebar
+  - product by category page
+  - chekout page, with sidebar to show order summary
+  - search page, with no sidebar
+  - blog page, with blog sidebar
   - page: privacy policy
   - page: terms of services
