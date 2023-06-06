@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request
-from db_config import db_cursor
+import os
 
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from docxtpl import DocxTemplate
+
+from db_config import db_cursor
 
 app = Flask(__name__)
 
@@ -25,13 +29,13 @@ def products():
 
     for each_product in products_from_db:
         products.append({
-        "id": each_product[0],
-        "product_name": each_product[1],
-        "available_qty": each_product[2],
-        "unit_price": each_product[3],
-        "image_url": each_product[4],
-        "details": each_product[5]
-    })
+            "id": each_product[0],
+            "product_name": each_product[1],
+            "available_qty": each_product[2],
+            "unit_price": each_product[3],
+            "image_url": each_product[4],
+            "details": each_product[5]
+        })
 
     return render_template("products.html", products=products)
 
@@ -75,13 +79,42 @@ def buy_now(name):
 def checkout():
     return render_template('checkout.html')
 
-@app.route('/success')
-def success():
-    return render_template('success.html')
+@app.route('/generate_invoice')
+def generate_invoice():
+    target_dir = os.path.abspath('./assets')
 
-@app.route('/failed')
-def failed():
-    return render_template('failed.html')
+    # # Check if ~$ or .DS_ were not found
+    # for file in os.listdir(target_dir):
+    #     if file.startswith('~$') or file.startswith('.DS_'):
+    #         raise Exception("Could not generate latest_invoice.docx because ~$ or .DS_ file were found.")
+        
+    temp_invoice = DocxTemplate(os.path.abspath(target_dir) + '\Invoice Template.docx')
+
+    # Replace all placeholders with new data    
+    context = {
+        'payment_status': request.args.get('payment_status'),
+        'invoice_id': request.args.get('invoice_id'),
+        'invoice_date': request.args.get('invoice_date'),
+        'customer_name': request.args.get('customer_name'),
+        'billing_address': request.args.get('billing_address'),
+        'products': request.args.get('products'),
+        'sub_total': request.args.get('sub_total'),
+        'delivery_charge': request.args.get('delivery_charge'),
+        'discount': request.args.get('discount'),
+        'total': request.args.get('total'),
+        'transaction_date': request.args.get('transaction_date'),
+        'gateway': request.args.get('gateway'),
+        'transaction_id': request.args.get('transaction_id'),
+        'payable_amount': request.args.get('payable_amount'),
+        'paid_amount': request.args.get('paid_amount'),
+        'balance': request.args.get('balance')
+    }
+    
+    temp_invoice.render(context)
+
+    # Save as .docx
+    output_path_for_docx = os.path.abspath(target_dir) + '\latest_invoice.docx'
+    temp_invoice.save(output_path_for_docx)
 
 @app.route('/contact')
 def contact():
@@ -117,8 +150,44 @@ def send_contact():
             )        
     return '<script>alert("Message has been sent");window.location.assign("/contact");</script>'
 
-@app.route('/sendMail')
-def send_email():
+@app.route('/sendInvoiceViaMail')
+def send_invoice_via_mail():
+    target_dir = os.path.abspath('./assets')
+
+    # # Check if ~$ or .DS_ were not found
+    # for file in os.listdir(target_dir):
+    #     if file.startswith('~$') or file.startswith('.DS_'):
+    #         raise Exception("Could not generate latest_invoice.docx because ~$ or .DS_ file were found.")
+        
+    temp_invoice = DocxTemplate(os.path.abspath(target_dir) + '\Invoice Template.docx')
+
+    # Replace all placeholders with new data    
+    context = {
+        'payment_status': 'completed',
+        'invoice_id': 'INV123456',
+        'invoice_date': '2023-06-01',
+        'customer_name': 'John Doe',
+        'billing_address': '123 Main Street, City',
+        'products': 'Product A, Product B, Product C',
+        'sub_total': '100.00',
+        'delivery_charge': '10.00',
+        'discount': '5.00',
+        'total': '105.00',
+        'transaction_date': '2023-06-01',
+        'gateway': 'Bkash',
+        'transaction_id': 'TXN78901234',
+        'payable_amount': '105.00',
+        'paid_amount': '105.00',
+        'balance': '0.00'
+    }
+    
+    temp_invoice.render(context)
+
+    # Save as .docx
+    output_path_for_docx = os.path.abspath(target_dir) + '\latest_invoice.docx'
+    temp_invoice.save(output_path_for_docx)
+
+    # Login and send email
     login_email = "mahfuz225bd@gmail.com"
     password = "tvxjyiorwdlbxzac"
 
@@ -137,6 +206,15 @@ def send_email():
 
         _MIMEText = MIMEText(body, "html")
         message.attach(_MIMEText)
+        
+        with open(output_path_for_docx, "rb") as fil:
+            part = MIMEApplication(
+                fil.read(),
+                Name=os.basename(output_path_for_docx)
+            )
+        # After the file is closed
+        part['Content-Disposition'] = 'attachment; filename="%s"' % os.basename(output_path_for_docx)
+        message.attach(part)
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
