@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import os
+import json
+from werkzeug.datastructures import ImmutableMultiDict
 
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -79,43 +81,6 @@ def buy_now(name):
 def checkout():
     return render_template('checkout.html')
 
-@app.route('/generate_invoice')
-def generate_invoice():
-    target_dir = os.path.abspath('./assets')
-
-    # # Check if ~$ or .DS_ were not found
-    # for file in os.listdir(target_dir):
-    #     if file.startswith('~$') or file.startswith('.DS_'):
-    #         raise Exception("Could not generate latest_invoice.docx because ~$ or .DS_ file were found.")
-        
-    temp_invoice = DocxTemplate(os.path.abspath(target_dir) + '\Invoice Template.docx')
-
-    # Replace all placeholders with new data    
-    context = {
-        'payment_status': request.args.get('payment_status'),
-        'invoice_id': request.args.get('invoice_id'),
-        'invoice_date': request.args.get('invoice_date'),
-        'customer_name': request.args.get('customer_name'),
-        'billing_address': request.args.get('billing_address'),
-        'products': request.args.get('products'),
-        'sub_total': request.args.get('sub_total'),
-        'delivery_charge': request.args.get('delivery_charge'),
-        'discount': request.args.get('discount'),
-        'total': request.args.get('total'),
-        'transaction_date': request.args.get('transaction_date'),
-        'gateway': request.args.get('gateway'),
-        'transaction_id': request.args.get('transaction_id'),
-        'payable_amount': request.args.get('payable_amount'),
-        'paid_amount': request.args.get('paid_amount'),
-        'balance': request.args.get('balance')
-    }
-    
-    temp_invoice.render(context)
-
-    # Save as .docx
-    output_path_for_docx = os.path.abspath(target_dir) + '\latest_invoice.docx'
-    temp_invoice.save(output_path_for_docx)
-
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
@@ -134,7 +99,7 @@ def send_contact():
     
         message = MIMEMultipart("alternative")
         message["Subject"] = subject
-        message["From"] = sender_email
+        message["From"] = login_email
         message["To"] = email
 
         body = f'Email: {email}<br/> Name: {name}<br/>Phone Number: {phoneNumber}<br/>==============================<br/> {text_message}'
@@ -150,8 +115,8 @@ def send_contact():
             )        
     return '<script>alert("Message has been sent");window.location.assign("/contact");</script>'
 
-@app.route('/sendInvoiceViaMail')
-def send_invoice_via_mail():
+@app.route('/payment')
+def payment():
     target_dir = os.path.abspath('./assets')
 
     # # Check if ~$ or .DS_ were not found
@@ -162,29 +127,10 @@ def send_invoice_via_mail():
     temp_invoice = DocxTemplate(os.path.abspath(target_dir) + '\Invoice Template.docx')
 
     # Replace all placeholders with new data    
-    context = {
-        'payment_status': 'completed',
-        'invoice_id': 'INV123456',
-        'invoice_date': '2023-06-01',
-        'customer_name': 'John Doe',
-        'billing_address': '123 Main Street, City',
-        'products': 'Product A, Product B, Product C',
-        'sub_total': '100.00',
-        'delivery_charge': '10.00',
-        'discount': '5.00',
-        'total': '105.00',
-        'transaction_date': '2023-06-01',
-        'gateway': 'Bkash',
-        'transaction_id': 'TXN78901234',
-        'payable_amount': '105.00',
-        'paid_amount': '105.00',
-        'balance': '0.00'
-    }
-    
     temp_invoice.render(context)
 
     # Save as .docx
-    output_path_for_docx = os.path.abspath(target_dir) + '\latest_invoice.docx'
+    output_path_for_docx = os.path.abspath(target_dir) + '\invoice.docx'
     temp_invoice.save(output_path_for_docx)
 
     # Login and send email
@@ -210,10 +156,10 @@ def send_invoice_via_mail():
         with open(output_path_for_docx, "rb") as fil:
             part = MIMEApplication(
                 fil.read(),
-                Name=os.basename(output_path_for_docx)
+                Name=os.path.basename(output_path_for_docx)
             )
         # After the file is closed
-        part['Content-Disposition'] = 'attachment; filename="%s"' % os.basename(output_path_for_docx)
+        part['Content-Disposition'] = 'attachment; filename="%s"' % os.path.basename(output_path_for_docx)
         message.attach(part)
 
         context = ssl.create_default_context()
