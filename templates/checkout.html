@@ -95,7 +95,8 @@
 				<ul class="product-list" id="productList">
 				</ul>
 				<p style="text-align: right; font-weight: bold;">Sub Total: &#2547; <output id="subTotal">0</output></p>
-				<p style="text-align: right; font-weight: bold;">Delivery Charge (+): &#2547; <span>30</span></p>
+				<p style="text-align: right; font-weight: bold;">Delivery Charge (+): &#2547; <output
+						id="deliveryCharge">0</output></p>
 				<p style="text-align: right; font-weight: bold;">Discount (-): &#2547; <output
 						id="discountPrice">0</output>
 				</p>
@@ -113,7 +114,7 @@
 <script src={{ url_for('static', filename="js/payment.js" ) }}></script>
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
-		const emptyOrderSummary = (isTrue) => {
+		const emptyOrderSummary = () => {
 			const orderSummary = document.getElementById("orderSummary")
 			orderSummary.innerHTML = `<ul class="product-list" id="productList">
 				</ul>
@@ -127,6 +128,7 @@
 		}
 
 		{% if  emptyExistingOrderSummary %}
+		// For buy now (single product)
 		emptyOrderSummary()
 
 		const tempProductListLi = (productName, unitPrice, qty, price) => `<li>

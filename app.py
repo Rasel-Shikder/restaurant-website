@@ -127,7 +127,9 @@ def payment():
     temp_invoice = DocxTemplate(os.path.abspath(target_dir) + '\Invoice Template.docx')
 
     # Replace all placeholders with new data    
-    temp_invoice.render(context)
+    # context = json.load(request.args.get('invoiceData'))
+
+    temp_invoice.render({})
 
     # Save as .docx
     output_path_for_docx = os.path.abspath(target_dir) + '\invoice.docx'
@@ -168,6 +170,7 @@ def payment():
             server.sendmail(
                 sender, email, message.as_string()
             )        
+    return f'<script>console.log({json.load(request.args.get("invoiceData"))});</script>'
     return '<script>alert("An email has been sent please check your email.");window.location.assign("/");</script>'
 
 @app.route('/search')

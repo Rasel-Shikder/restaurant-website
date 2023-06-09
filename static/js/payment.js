@@ -38,19 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
         // Bellow code should be here, add those code inside if (xhr.readyState === 4 && xhr.status === 200) { ... } 
         const formData = new FormData(e.target)
         const today = new Date().toLocaleDateString();
-        const isPaid = true
+        const isPaidViaPaymentGateway = true
         const invoiceData = {
-            'payment_status': isPaid ? 'Paid' : 'Unpaid',
+            'payment_status': 'Paid',
             'invoice_id': 'INV' + Math.floor(Math.random() * 100000) + 1000,
             'order_date': today,
             'customer_name': formData.get('name'),
             'billing_address': formData.get('billingAddress'),
-            'products': 'Products Not Provided',
+            'products': JSON.parse(localStorage.getItem('cartItems')),
             'sub_total': document.querySelector('output#subTotal').innerHTML,
             'delivery_charge': '30',
             'discount': document.querySelector('output#discountPrice').innerHTML,
             'total': document.querySelector('output#totalToCheckout').innerHTML,
-            'transaction_date': isPaid ? today : '',
+            'transaction_date': isPaidViaPaymentGateway ? today : '',
             'gateway': formData.get('payment'),
             'transaction_id': '{TRANSACTION_ID}',
             'paid_amount': '{Paid Amount}',

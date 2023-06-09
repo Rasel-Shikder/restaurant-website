@@ -26,11 +26,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update order subtotal and totalToCheckout
     const subTotal = document.querySelector("#subTotal")
+
+    let deliveryChargeAmount = 0
+    const deliveryCharge = document.querySelector('#deliveryCharge')
+    if (productList.querySelectorAll('li').length > 0) {
+        deliveryChargeAmount = 30
+        deliveryCharge.innerHTML = deliveryChargeAmount
+    }
+
     const discountPrice = document.getElementById('discountPrice')
     const totalToCheckout = document.getElementById('totalToCheckout')
 
     subTotal.innerHTML = parseFloat(totalPrice).toFixed(2)
-    totalToCheckout.innerText = parseFloat(Number(subTotal.innerText) + 30 - Number(discountPrice.innerText)).toFixed(2)
+    totalToCheckout.innerText = parseFloat(Number(subTotal.innerText) + deliveryChargeAmount - Number(discountPrice.innerText)).toFixed(2)
 
     function disableMobileBanking(isTrue) {
         const elems = document.querySelectorAll('#mobileBankingInfo select, #mobileBankingInfo input');
