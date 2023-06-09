@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const invoiceData = {
             'payment_status': isPaid ? 'Paid' : 'Unpaid',
             'invoice_id': 'INV' + Math.floor(Math.random() * 100000) + 1000,
-            'invoice_date': today,
+            'order_date': today,
             'customer_name': formData.get('name'),
             'billing_address': formData.get('billingAddress'),
             'products': 'Products Not Provided',
@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'transaction_date': isPaid ? today : '',
             'gateway': formData.get('payment'),
             'transaction_id': '{TRANSACTION_ID}',
-            'payable_amount': document.querySelector('output#totalToCheckout').innerHTML,
             'paid_amount': '{Paid Amount}',
             'balance': '{Balance}'
         };

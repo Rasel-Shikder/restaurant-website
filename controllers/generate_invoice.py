@@ -2,7 +2,7 @@ from docxtpl import DocxTemplate
 import os
 
 
-def generate_invoice(payment_status, invoice_id, invoice_date, customer_name, billing_address, products, sub_total, delivery_charge, discount, total, transaction_date, gateway, transaction_id, payable_amount, paid_amount, balance):
+def generate_invoice(payment_status, invoice_id, order_date, customer_name, billing_address, products, sub_total, delivery_charge, discount, total, transaction_date, gateway, transaction_id, paid_amount, balance):
     target_dir = os.path.abspath('../assets')
 
     # # Check if ~$ or .DS_ were not found
@@ -16,7 +16,7 @@ def generate_invoice(payment_status, invoice_id, invoice_date, customer_name, bi
     context = {
         'payment_status': payment_status,
         'invoice_id': invoice_id,
-        'invoice_date': invoice_date,
+        'order_date': order_date,
         'customer_name': customer_name,
         'billing_address': billing_address,
         'products': products,
@@ -27,7 +27,6 @@ def generate_invoice(payment_status, invoice_id, invoice_date, customer_name, bi
         'transaction_date': transaction_date,
         'gateway': gateway,
         'transaction_id': transaction_id,
-        'payable_amount': payable_amount,
         'paid_amount': paid_amount,
         'balance': balance
     }
