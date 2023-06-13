@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const deliveryCharge = document.querySelector('#deliveryCharge')
     if (productList.querySelectorAll('li').length > 0) {
         deliveryChargeAmount = 30
-        deliveryCharge.innerHTML = deliveryChargeAmount
+        deliveryCharge.innerHTML = deliveryChargeAmount + '.00'
     }
 
     const discountPrice = document.getElementById('discountPrice')

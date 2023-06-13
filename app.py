@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import os
 import json
-from werkzeug.datastructures import ImmutableMultiDict
 
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -129,7 +128,7 @@ def payment():
     # Replace all placeholders with new data    
     # context = json.load(request.args.get('invoiceData'))
 
-    temp_invoice.render({})
+    temp_invoice.render(json.loads(request.args.get("invoiceData")))
 
     # Save as .docx
     output_path_for_docx = os.path.abspath(target_dir) + '\invoice.docx'
@@ -169,8 +168,8 @@ def payment():
             server.login(login_email, password)
             server.sendmail(
                 sender, email, message.as_string()
-            )        
-    return f'<script>console.log({json.load(request.args.get("invoiceData"))});</script>'
+            )
+
     return '<script>alert("An email has been sent please check your email.");window.location.assign("/");</script>'
 
 @app.route('/search')

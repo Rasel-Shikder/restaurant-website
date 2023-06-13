@@ -38,27 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
         // Bellow code should be here, add those code inside if (xhr.readyState === 4 && xhr.status === 200) { ... } 
         const formData = new FormData(e.target)
         const today = new Date().toLocaleDateString();
-        const isPaidViaPaymentGateway = true
+        const total = document.querySelector("output#totalToCheckout").innerHTML
+        const isNotCOD = formData.get("payment") !== 'COD'
+
         const invoiceData = {
-            'payment_status': 'Paid',
-            'invoice_id': 'INV' + Math.floor(Math.random() * 100000) + 1000,
-            'order_date': today,
-            'customer_name': formData.get('name'),
-            'billing_address': formData.get('billingAddress'),
-            'products': JSON.parse(localStorage.getItem('cartItems')),
-            'sub_total': document.querySelector('output#subTotal').innerHTML,
-            'delivery_charge': '30',
-            'discount': document.querySelector('output#discountPrice').innerHTML,
-            'total': document.querySelector('output#totalToCheckout').innerHTML,
-            'transaction_date': isPaidViaPaymentGateway ? today : '',
-            'gateway': formData.get('payment'),
-            'transaction_id': '{TRANSACTION_ID}',
-            'paid_amount': '{Paid Amount}',
-            'balance': '{Balance}'
+            "payment_status": isNotCOD ? "Paid" : "Unpaid",
+            "order_id": "INV" + Math.floor(Math.random() * 100000) + 1000,
+            "order_date": today,
+            "customer_name": formData.get("name"),
+            "billing_address": formData.get("billingAddress"),
+            "shipping_address": formData.get("shippingAddress"),
+            "products": JSON.parse(localStorage.getItem("cartItems")),
+            "sub_total": document.querySelector("output#subTotal").innerHTML,
+            "delivery_charge": "30.00",
+            "discount": document.querySelector("output#discountPrice").innerHTML,
+            "total": total,
+            "transaction_date": today,
+            "payment_method": formData.get("payment"),
+            "transaction_id": "{TRANSACTION_ID}",
+            "paid_amount": isNotCOD ? total : 0,
+            "balance": 0
         };
 
+        invoiceData.balance = Number(invoiceData.total) - Number(invoiceData.paid_amount)
 
-        window.location.assign(`/payment?from=mahfuz225bd@gmail.com&to=${document.getElementById("email").value}&subject=You%20payment%20is%20successful&message=Invoice%23${invoiceData.invoice_id}%20-%20Total%20Price%3A%20BDT%20${invoiceData.total}&invoiceData=${encodeURIComponent(JSON.stringify(invoiceData))}`)
+
+        window.location.assign(`/payment?from=mahfuz225bd@gmail.com&to=${document.getElementById("email").value}&subject=You%20payment%20is%20successful&message=Invoice%23${invoiceData.order_id}%20-%20Total%20Price%3A%20BDT%20${invoiceData.total}&invoiceData=${encodeURIComponent(JSON.stringify(invoiceData))}`)
         if (window.location.pathname === '/checkout') {
             localStorage.setItem('cartItems', '[]')
         }

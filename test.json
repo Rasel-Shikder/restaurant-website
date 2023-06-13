@@ -1,0 +1,36 @@
+[
+  {
+    "payment_status": "Paid",
+    "invoice_id": "INV990381000",
+    "order_date": "6/10/2023",
+    "customer_name": "Muhammad%20Sultan%20Al%20Mahfuz",
+    "billing_address": "11-C,%2010-03-08,%20Dhaka-1216,%20Bangladesh",
+    "products": [
+      {
+        "id": 1,
+        "productName": "Burger",
+        "availableQty": "25",
+        "qty": 1,
+        "unitPrice": 249,
+        "imageUrl": "images/products/product1.jpg"
+      },
+      {
+        "id": 2,
+        "productName": "Lacchi",
+        "availableQty": "50",
+        "qty": 1,
+        "unitPrice": 392.89,
+        "imageUrl": "images/products/product3.jpg"
+      }
+    ],
+    "sub_total": "249.00",
+    "delivery_charge": "30",
+    "discount": "0",
+    "total": "279.00",
+    "transaction_date": "6/10/2023",
+    "gateway": "COD",
+    "transaction_id": "{TRANSACTION_ID}",
+    "paid_amount": "{Paid%20Amount}",
+    "balance": "{Balance}"
+  }
+]

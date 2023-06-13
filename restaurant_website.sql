@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2023 at 09:03 AM
+-- Generation Time: Jun 13, 2023 at 07:15 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -24,6 +24,77 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `order_date` date DEFAULT NULL,
+  `customer_name` varchar(100) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `billing_address` text DEFAULT NULL,
+  `shipping_address` text DEFAULT NULL,
+  `phone_number` varchar(15) DEFAULT NULL,
+  `payment_date` date DEFAULT NULL,
+  `payment_gateway` varchar(50) DEFAULT NULL,
+  `transaction_id` varchar(50) DEFAULT NULL,
+  `subtotal` decimal(4,2) DEFAULT NULL,
+  `delivery_charge` decimal(4,2) DEFAULT NULL,
+  `discount_price` decimal(4,2) DEFAULT NULL,
+  `payable_amount` decimal(4,2) DEFAULT NULL,
+  `paid_amount` decimal(4,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `order_date`, `customer_name`, `email`, `billing_address`, `shipping_address`, `phone_number`, `payment_date`, `payment_gateway`, `transaction_id`, `subtotal`, `delivery_charge`, `discount_price`, `payable_amount`, `paid_amount`) VALUES
+(1, '2023-06-01', 'John Smith', 'john@example.com', '123 Main St, City, Country', '456 Elm St, City, Country', '1234567890', '2023-06-02', 'PayPal', 'ABC123', '50.00', '5.00', '10.00', '45.00', '45.00'),
+(2, '2023-06-02', 'Jane Doe', 'jane@example.com', '789 Oak St, City, Country', '987 Pine St, City, Country', '0987654321', '2023-06-03', 'Stripe', 'DEF456', '75.00', '7.50', '15.00', '67.50', '67.50'),
+(3, '2023-06-03', 'David Johnson', 'david@example.com', '321 Maple St, City, Country', '654 Birch St, City, Country', '5678901234', '2023-06-04', 'PayPal', 'GHI789', '99.99', '10.00', '20.00', '90.00', '90.00'),
+(4, '2023-06-04', 'Emily Davis', 'emily@example.com', '543 Walnut St, City, Country', '876 Cedar St, City, Country', '4321098765', '2023-06-05', 'Stripe', 'JKL012', '65.00', '6.50', '13.00', '58.50', '58.50'),
+(5, '2023-06-05', 'Michael Brown', 'michael@example.com', '987 Elm St, City, Country', '654 Pine St, City, Country', '5678904321', '2023-06-06', 'PayPal', 'MNO345', '85.00', '8.50', '17.00', '76.50', '76.50'),
+(6, '2023-06-06', 'Sarah Wilson', 'sarah@example.com', '123 Oak St, City, Country', '456 Birch St, City, Country', '0987654321', '2023-06-07', 'Stripe', 'PQR678', '95.00', '9.50', '19.00', '85.50', '85.50'),
+(7, '2023-06-07', 'Daniel Martinez', 'daniel@example.com', '789 Maple St, City, Country', '987 Cedar St, City, Country', '1234567890', '2023-06-08', 'PayPal', 'STU901', '55.00', '5.50', '11.00', '49.50', '49.50'),
+(8, '2023-06-08', 'Olivia Thompson', 'olivia@example.com', '321 Walnut St, City, Country', '654 Elm St, City, Country', '0987654321', '2023-06-09', 'Stripe', 'VWX234', '75.00', '7.50', '15.00', '67.50', '67.50'),
+(9, '2023-06-09', 'Christopher Anderson', 'christopher@example.com', '543 Oak St, City, Country', '876 Birch St, City, Country', '5678904321', '2023-06-10', 'PayPal', 'YZA567', '60.00', '6.00', '12.00', '54.00', '54.00'),
+(10, '2023-06-10', 'Ava White', 'ava@example.com', '987 Maple St, City, Country', '654 Cedar St, City, Country', '1234567890', '2023-06-11', 'Stripe', 'BCD890', '80.00', '8.00', '16.00', '72.00', '72.00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `unit_price` decimal(4,2) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `price` decimal(4,2) DEFAULT NULL,
+  `order_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `product_id`, `unit_price`, `qty`, `price`, `order_id`) VALUES
+(1, 1, '10.00', 2, '20.00', 1),
+(2, 2, '15.00', 1, '15.00', 1),
+(3, 3, '8.50', 3, '25.50', 2),
+(4, 1, '10.00', 4, '40.00', 3),
+(5, 4, '20.00', 2, '40.00', 4),
+(6, 5, '5.00', 5, '25.00', 4),
+(7, 3, '8.50', 1, '8.50', 5),
+(8, 2, '15.00', 3, '45.00', 6),
+(9, 5, '5.00', 2, '10.00', 7),
+(10, 4, '20.00', 1, '20.00', 8);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products`
 --
 
@@ -33,41 +104,135 @@ CREATE TABLE `products` (
   `available_qty` int(11) DEFAULT 0,
   `unit_price` decimal(10,2) DEFAULT NULL,
   `image_url` varchar(255) DEFAULT NULL,
-  `details` text DEFAULT NULL
+  `details` text DEFAULT NULL,
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `product_name`, `available_qty`, `unit_price`, `image_url`, `details`) VALUES
-(2, 'Burger', 25, '249.00', 'images/products/product1.jpg', 'Introducing the extraordinary \"Deluxe Gourmet Burger,\" a culinary marvel that will transport your taste buds to a realm of pure burger bliss. Meticulously crafted with an array of high-quality ingredients, this burger is a symphony of flavors and textures that will leave you craving more.\n<br><br>\nAt the heart of this culinary masterpiece lies a juicy, hand-formed patty made from the finest USDA prime beef, delicately seasoned with a proprietary blend of herbs and spices. Grilled to perfection, each bite bursts with succulent tenderness, showcasing the exceptional quality of the meat.\n<br><br>\nTo elevate the experience further, we layer the patty with a generous slice of aged Gruyère cheese, known for its rich and nutty flavor profile that beautifully complements the beef. As the cheese slowly melts over the patty, it creates a luscious, creamy blanket that envelops every mouthful.\n<br><br>\nNestled between freshly baked artisanal buns, toasted to a golden crispness, our Deluxe Gourmet Burger is adorned with a symphony of vibrant toppings. Crisp lettuce, vine-ripened tomato slices, and thinly sliced red onions add a refreshing crunch, while dill pickles provide a tangy burst of flavor that cuts through the richness.'),
-(3, 'Sandwich', 0, '162.31', 'images/products/product2.jpg', 'Introducing our sensational \"Ultimate Deli Sandwich,\" a culinary masterpiece that will redefine your sandwich experience. Expertly crafted with an array of premium ingredients, this sandwich is a symphony of flavors that will leave you craving every bite.\n<br><br>\nAt the core of this extraordinary creation, you\'ll find layers of succulent, thinly sliced roasted turkey breast and savory smoked ham, meticulously seasoned with a blend of herbs and spices. These premium deli meats are a testament to our commitment to quality, ensuring each bite is tender, flavorful, and irresistibly delicious.\n<br><br>\nNestled between slices of freshly baked artisanal bread, with a choice of classic white or wholesome whole grain, our Ultimate Deli Sandwich is elevated with a medley of tantalizing toppings. Crisp lettuce, vine-ripened tomato slices, and thinly sliced red onions add a refreshing crunch, while tangy dill pickles provide a delightful burst of flavor.\n<br><br>\nTo take this sandwich to new heights, we slather on a creamy spread crafted from a secret blend of premium mayonnaise, Dijon mustard, and select herbs and spices. This delectable sauce adds a harmonious balance of tanginess and creaminess, bringing all the flavors together in perfect harmony.'),
-(4, 'Lacchi', 50, '392.89', 'images/products/product3.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(5, 'Chunk', 30, '154.07', 'images/products/product4.jpg', 'Introducing our irresistible \"Crispy Pop Chicken Bites,\" a finger-licking sensation that will have you hooked from the first bite. These bite-sized pieces of pure delight are perfectly seasoned and fried to golden perfection, offering an explosion of flavor and a satisfying crunch in every mouthful.\n<br>\nOur Crispy Pop Chicken Bites start with tender, succulent chicken pieces, carefully selected for their quality and flavor. Each piece is marinated in a secret blend of herbs and spices, ensuring that every bite is infused with a tantalizing burst of savory goodness.\n<br>\nCoated in a light, crispy batter, these delectable chicken bites are fried to achieve an irresistible golden brown crust. The result is a crispy exterior that gives way to juicy, flavorful chicken on the inside, providing a textural contrast that will keep you coming back for more.\n<br>\nBut the magic doesn\'t stop there. To take these bites to a whole new level of taste, we offer a variety of mouthwatering dipping sauces. From tangy barbecue to zesty ranch, or even a spicy buffalo sauce, these accompaniments add an extra dimension of flavor, allowing you to customize your pop chicken experience to perfection.'),
-(6, 'Glazed', 24, '291.28', 'images/products/product5.jpg', 'Introducing our delectable \"Glorious Glazed Delights,\" a collection of mouthwatering treats that will satisfy your sweet cravings and leave you wanting more. Indulge in the irresistible allure of our glazed creations, each one carefully crafted to perfection with a luscious, glossy coating that adds a burst of flavor and a touch of elegance.\n<br>\nOur Glorious Glazed Delights feature a variety of delectable options, from fluffy donuts to sumptuous pastries. Each treat is lovingly made with the finest ingredients and baked or fried to achieve a heavenly texture that melts in your mouth.\n<br>\nPrepare to be enchanted by our signature glazes, crafted with precision to create a perfect balance of sweetness and richness. From classic flavors like velvety vanilla and heavenly chocolate to enticing options like zesty lemon or indulgent caramel, our glazes take these treats to a whole new level of deliciousness.'),
-(7, 'Jambu Burger', 94, '97.80', 'images/products/product6.jpg', 'Introducing the extraordinary \"Deluxe Gourmet Burger,\" a culinary marvel that will transport your taste buds to a realm of pure burger bliss. Meticulously crafted with an array of high-quality ingredients, this burger is a symphony of flavors and textures that will leave you craving more.\n\nAt the heart of this culinary masterpiece lies a juicy, hand-formed patty made from the finest USDA prime beef, delicately seasoned with a proprietary blend of herbs and spices. Grilled to perfection, each bite bursts with succulent tenderness, showcasing the exceptional quality of the meat.\n\nTo elevate the experience further, we layer the patty with a generous slice of aged Gruyère cheese, known for its rich and nutty flavor profile that beautifully complements the beef. As the cheese slowly melts over the patty, it creates a luscious, creamy blanket that envelops every mouthful.\n\nNestled between freshly baked artisanal buns, toasted to a golden crispness, our Deluxe Gourmet Burger is adorned with a symphony of vibrant toppings. Crisp lettuce, vine-ripened tomato slices, and thinly sliced red onions add a refreshing crunch, while dill pickles provide a tangy burst of flavor that cuts through the richness.'),
-(8, 'Gloria Jeans Cofee', 70, '136.61', 'images/products/product7.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(9, 'Pasta', 85, '365.45', 'images/products/product8.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(10, 'Cheesy Burger', 93, '314.05', 'images/products/product9.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(11, 'Beef Bhuna', 12, '427.86', 'images/products/product10.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(12, 'Pan Cake', 83, '352.86', 'images/products/product11.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(13, 'Honey Cake', 84, '153.72', 'images/products/product12.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(14, 'Chiken Toast', 60, '194.81', 'images/products/product13.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(15, 'Pizza Medium', 80, '67.90', 'images/products/product14.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(16, 'Noodles', 79, '436.84', 'images/products/product15.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.'),
-(17, 'Biriyani', 91, '488.87', 'images/products/product16.jpg', 'Introducing our delightful \"Creamy Lassi Fusion,\" a refreshingly indulgent drink that combines traditional flavors with a modern twist. This luscious concoction is a harmonious blend of creamy yogurt, aromatic spices, and a burst of fruity goodness, creating a symphony of flavors that will transport you to a state of pure bliss.\n<br><br>\nOur Creamy Lassi Fusion begins with velvety smooth yogurt, handcrafted using the finest quality milk. This yogurt forms the foundation of our drink, providing a rich and creamy base that tantalizes your taste buds with its luxurious texture.\n<br><br>\nTo enhance the experience, we infuse our lassi with a medley of fragrant spices. Cardamom, a touch of saffron, and a hint of aromatic rose water dance together to create a symphony of enticing aromas and flavors. These traditional spices add depth and complexity, elevating the lassi to new heights of deliciousness.');
+INSERT INTO `products` (`id`, `product_name`, `available_qty`, `unit_price`, `image_url`, `details`, `category_id`) VALUES
+(1, 'Product A', 5, '10.00', 'http://example.com/image1.jpg', 'Product A details', 1),
+(2, 'Product B', 3, '15.00', 'http://example.com/image2.jpg', 'Product B details', 2),
+(3, 'Product C', 8, '8.50', 'http://example.com/image3.jpg', 'Product C details', 1),
+(4, 'Product D', 2, '20.00', 'http://example.com/image4.jpg', 'Product D details', 2),
+(5, 'Product E', 6, '5.00', 'http://example.com/image5.jpg', 'Product E details', 1),
+(6, 'Product F', 4, '15.00', 'http://example.com/image6.jpg', 'Product F details', 2),
+(7, 'Product G', 9, '5.00', 'http://example.com/image7.jpg', 'Product G details', 1),
+(8, 'Product H', 7, '20.00', 'http://example.com/image8.jpg', 'Product H details', 2),
+(9, 'Product I', 1, '10.00', 'http://example.com/image9.jpg', 'Product I details', 1),
+(10, 'Product J', 0, '25.00', 'http://example.com/image10.jpg', 'Product J details', 2),
+(11, 'Product K', 3, '12.50', 'http://example.com/image11.jpg', 'Product K details', 1),
+(12, 'Product L', 10, '18.00', 'http://example.com/image12.jpg', 'Product L details', 2),
+(13, 'Product M', 6, '9.50', 'http://example.com/image13.jpg', 'Product M details', 1),
+(14, 'Product N', 2, '22.00', 'http://example.com/image14.jpg', 'Product N details', 2),
+(15, 'Product O', 4, '7.50', 'http://example.com/image15.jpg', 'Product O details', 1),
+(16, 'Product P', 8, '14.00', 'http://example.com/image16.jpg', 'Product P details', 2),
+(17, 'Product Q', 5, '6.00', 'http://example.com/image17.jpg', 'Product Q details', 1),
+(18, 'Product R', 7, '18.50', 'http://example.com/image18.jpg', 'Product R details', 2),
+(19, 'Product S', 0, '11.00', 'http://example.com/image19.jpg', 'Product S details', 1),
+(20, 'Product T', 9, '24.00', 'http://example.com/image20.jpg', 'Product T details', 2),
+(21, 'Product U', 2, '11.50', 'http://example.com/image21.jpg', 'Product U details', 1),
+(22, 'Product V', 6, '17.00', 'http://example.com/image22.jpg', 'Product V details', 2),
+(23, 'Product W', 3, '8.00', 'http://example.com/image23.jpg', 'Product W details', 1),
+(24, 'Product X', 1, '21.00', 'http://example.com/image24.jpg', 'Product X details', 2),
+(25, 'Product Y', 5, '5.50', 'http://example.com/image25.jpg', 'Product Y details', 1),
+(26, 'Product Z', 4, '16.00', 'http://example.com/image26.jpg', 'Product Z details', 2),
+(27, 'Product AA', 7, '10.50', 'http://example.com/image27.jpg', 'Product AA details', 1),
+(28, 'Product BB', 2, '19.00', 'http://example.com/image28.jpg', 'Product BB details', 2),
+(29, 'Product CC', 8, '7.00', 'http://example.com/image29.jpg', 'Product CC details', 1),
+(30, 'Product DD', 3, '23.00', 'http://example.com/image30.jpg', 'Product DD details', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_categories`
+--
+
+CREATE TABLE `product_categories` (
+  `id` int(11) NOT NULL,
+  `value` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_categories`
+--
+
+INSERT INTO `product_categories` (`id`, `value`) VALUES
+(1, 'Category A'),
+(2, 'Category B'),
+(3, 'Category C'),
+(4, 'Category D'),
+(5, 'Category E');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `table_reservation`
+--
+
+CREATE TABLE `table_reservation` (
+  `id` int(11) NOT NULL,
+  `nos_person` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `time` time DEFAULT NULL,
+  `contact_name` varchar(255) DEFAULT NULL,
+  `contact_email` varchar(255) DEFAULT NULL,
+  `contact_phone_no` varchar(20) DEFAULT NULL,
+  `notes` text DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `table_reservation`
+--
+
+INSERT INTO `table_reservation` (`id`, `nos_person`, `date`, `time`, `contact_name`, `contact_email`, `contact_phone_no`, `notes`) VALUES
+(1, 2, '2023-06-14', '12:00:00', 'John Doe', 'johndoe@example.com', '+123456789', 'Additional information for Reservation 1'),
+(2, 4, '2023-06-15', '14:30:00', 'Jane Smith', 'janesmith@example.com', '+987654321', 'Additional information for Reservation 2'),
+(3, 3, '2023-06-16', '18:00:00', 'Alice Johnson', 'alicejohnson@example.com', '+111222333', 'Additional information for Reservation 3'),
+(4, 6, '2023-06-17', '20:15:00', 'Bob Williams', 'bobwilliams@example.com', '+444555666', 'Additional information for Reservation 4'),
+(5, 1, '2023-06-18', '10:45:00', 'Emily Davis', 'emilydavis@example.com', '+777888999', 'Additional information for Reservation 5');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `fk_order_details_product_id` (`product_id`);
+
+--
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `product_name` (`product_name`);
+  ADD UNIQUE KEY `product_name` (`product_name`),
+  ADD KEY `fk_category_id` (`category_id`);
+
+--
+-- Indexes for table `product_categories`
+--
+ALTER TABLE `product_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `table_reservation`
+--
+ALTER TABLE `table_reservation`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `date` (`date`),
+  ADD UNIQUE KEY `time` (`time`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -77,7 +242,24 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `fk_order_details_product_id` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`);
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `product_categories` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
