@@ -13,12 +13,14 @@ Others:
     - our values
     - payment methods
     - who developed this website
+
   - sub pages of about
     - our factory page
     - our machine page
     - our staff page
     - our field page
     - our web developers page
+
   - for home page
     - todays best deal section
     - table reservation
@@ -38,6 +40,7 @@ Others:
     - product search with autocomplete
     - filter product category
     - filter price range
+
   - complete product details page
     - add to cart
     - if added to cart, spin quantity
@@ -47,6 +50,7 @@ Others:
     - questions about product
     - add product to wishlist
     - related products
+
   - add google map to contact page
   - live chat
   - table reservation
